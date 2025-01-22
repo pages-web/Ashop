@@ -32,7 +32,7 @@ export default function Home() {
       <CategoryCard />
       <Display />
       <div className="container flex items-center justify-between">
-        <Heading title="Сүүлд нэмэгдсэн" className=" text-left lg:mb-5" />
+        <Heading title="Хямдралтай бүтээгдэхүүн" className=" text-left lg:mb-5" />
         <Button asChild variant="link" className="mb-3 lg:mb-5">
           <Link href="/category">
             Цааш үзэх

@@ -149,12 +149,23 @@ const productReview = gql`
     }
   }
 `;
+const getSalesProducts = gql`
+  query SalesProducts($status: String, $isQuantityEnabled: Boolean) {
+    pricingPlans(status: $status, isQuantityEnabled: $isQuantityEnabled) {
+      value
+      products
+      productsExcluded
+      productsBundle
+    }
+  }
+`;
 
 const queries = {
   productCategories,
   products,
   productsCount,
   productSimilarities,
+  getSalesProducts,
   productDetail,
   productsMeta,
   productReview,

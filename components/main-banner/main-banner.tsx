@@ -23,8 +23,6 @@ const MainBanner = async () => {
             <BannerItem key={article._id} {...article} />
           ))}
         </CarouselContent>
-        <CarouselPrevious className="left-8 hidden lg:inline-flex" />
-        <CarouselNext className="right-8 hidden lg:inline-flex" />
       </Carousel>
     </div>
   );
@@ -42,7 +40,7 @@ const BannerItem = ({ _id, image, summary, attachments }: IArticle) => {
           alt=""
           width={1536}
           height={600}
-          className="absolute object-cover inset-0 object-center hidden lg:block"
+          className="absolute object-cover inset-0 object-center lg:block"
           skipAnimation
         />
         <Image
@@ -51,7 +49,7 @@ const BannerItem = ({ _id, image, summary, attachments }: IArticle) => {
           width={1536}
           height={600}
           skipAnimation
-          className="absolute object-cover inset-0 object-center lg:hidden"
+          className="absolute object-cover inset-0 object-center hidden"
         />
       </Link>
     </CarouselItem>

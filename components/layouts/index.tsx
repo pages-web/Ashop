@@ -21,7 +21,7 @@ const DefaultLayout = ({ children }: React.PropsWithChildren) => {
         >
           <Link href={'/category'}>
             Дэлгүүр
-            <ChevronDownIcon className="h-4 w-4 ml-1" />
+            {/* <ChevronDownIcon className="h-4 w-4 ml-1" /> */}
           </Link>
         </Button>
         <Suspense fallback={<div className="hidden lg:block flex-1" />}>

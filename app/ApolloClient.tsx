@@ -24,6 +24,7 @@ const authLink = setContext((_, { headers }) => {
     headers: {
       ...headers,
       cookie,
+      'erxes-app-token': process.env.NEXT_PUBLIC_ERXES_APP_TOKEN,
       'Access-Control-Allow-Origin': `${process.env.NEXT_PUBLIC_MAIN_API_DOMAIN}/graphql`,
       authorization: token ? `Bearer ${token}` : ''
     }

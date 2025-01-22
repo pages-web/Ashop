@@ -34,7 +34,7 @@ export async function NavbarTop({
             skipAnimation
             priority
             alt=""
-            className="object-contain h-12 w-auto object-left"
+            className="object-contain h-12 w-auto object-left rounded-2xl"
           />
         </Link>
         {children}
