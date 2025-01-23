@@ -21,9 +21,10 @@ const Footer = async () => {
             </Col>
             <Col title="Туслах цэс">
               <FooterLink href="/terms-of-service">
-                Үйлчилгээний нөхцөл
+                Aлсын хараа
               </FooterLink>
-              <FooterLink href="/privacy-policy">Нууцлалын бодлого</FooterLink>
+              <FooterLink href="/mission">Эрхэм зорилго</FooterLink>
+              <FooterLink href="/value">Үнэт зүйлс</FooterLink>
             </Col>
             <Col title="Холбоо барих">
               {!!email && (

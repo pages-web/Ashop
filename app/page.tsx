@@ -11,6 +11,7 @@ import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import { Metadata } from 'next/types';
 import { Suspense } from 'react';
+import SaleList from './sale-items/page';
 
 export const revalidate = 300;
 
@@ -32,17 +33,18 @@ export default function Home() {
       <CategoryCard />
       <Display />
       <div className="container flex items-center justify-between">
-        <Heading title="Хямдралтай бүтээгдэхүүн" className=" text-left lg:mb-5" />
+        <Heading title=""/>
         <Button asChild variant="link" className="mb-3 lg:mb-5">
-          <Link href="/category">
-            Цааш үзэх
+          <Link href="/sale-items">
+            Бүгдийг үзэх
             <ChevronRight className="h-5 w-5 ml-1 -mr-2" strokeWidth={1.5} />
           </Link>
         </Button>
       </div>
       <div className="container mb-6 lg:mb-16">
         <Suspense>
-          <RecommendedProducts />
+          {/* <RecommendedProducts categoryId='_XSGanUrzPJxMXV0PlbYY' /> */}
+          <SaleList />
         </Suspense>
       </div>
     </div>

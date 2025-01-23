@@ -17,16 +17,17 @@ const PrivateRoute = ({
   const router = useRouter();
   const guest = storefront.allowGuestAccount && inCheckout;
 
-  useEffect(() => {
-    if (guest) {
-      return;
-    }
-    if (!loading && !currentUser) {
-      router.push(`/login?from=${pathname}`);
-    }
-  }, [loading, currentUser]);
+  // useEffect(() => {
+  //   if (guest) {
+  //     return;
+  //   }
+  //   if (!loading && !currentUser) {
+  //     router.push(`/login?from=${pathname}`);
+  //   }
+  // }, [loading, currentUser]);
 
-  if (currentUser || guest) return children;
+  // if (currentUser || guest)
+     return children;
 
   return (
     <div className="flex-auto flex justify-center items-center py-32">

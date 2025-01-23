@@ -14,12 +14,14 @@ const PurchaseCard = ({
   _id,
   remainder,
   attachment,
+  code,
   hasSimilarity,
 }: IProductDetail) => {
   const product = {
     name,
     unitPrice,
     _id,
+    code,
     remainder,
     attachment,
     hasSimilarity,
@@ -41,13 +43,9 @@ const PurchaseCard = ({
         >
           {name}
         </h1>
-        <div>
-          <Price amount={unitPrice} className="mr-2 font-bold text-2xl" />
-
-          {/* <Price
-            amount={unitPrice + ''}
-            className="text-base text-neutral-500 line-through"
-          /> */}
+        <div className="pt-3 sm:pt-2 w-full">
+          <p className="text-gray-500 text-sm p-2">Бүтээгдэхүүний код: {code}</p>
+          <Price amount={unitPrice} className="mr-2 pt-2 font-bold text-3xl sm:text-2xl" />
         </div>
         <ProductReview productId={product._id} />
         <Remainder remainder={remainder} />

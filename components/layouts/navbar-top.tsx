@@ -44,7 +44,7 @@ export async function NavbarTop({
         <Separator className="bg-background/10" />
         <div className="container py-0.5 flex">
           <Suspense>
-            <CategoryNavContainer />
+            {/* <CategoryNavContainer /> */}
           </Suspense>
         </div>
       </div>

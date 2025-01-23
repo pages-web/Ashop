@@ -56,12 +56,12 @@ const SaleProduct = ({
       <div className="p-4 text-sm">
         <Link
           href={`/product/${_id}`}
-          className="hover:text-primary line-clamp-1 block text-center sm:text-left"
+          className="hover:text-primary line-clamp-1 block text-center sm:text-left" // Center text on mobile and left-align on sm+
         >
           {name}
         </Link>
         <span
-          className="block py-2 font-bold text-center sm:text-left"
+          className="block py-2 font-bold text-center sm:text-left" // Center price on mobile and left-align on sm+
           data-testid="product-card-vertical-price"
         >
           {discountValue ? (
@@ -70,10 +70,14 @@ const SaleProduct = ({
                 amount={unitPrice}
                 className="text-sm text-neutral-500 line-through relative right-[6px]"
               />
-              <Price amount={0}              />
+              <Price
+                amount={unitPrice}
+                discountValue={discountValue}
+                className="text-base relative right-[8px]"
+              />
             </div>
           ) : (
-            <Price amount={unitPrice} />
+            <Price amount={unitPrice} discountValue={discountValue} />
           )}
         </span>
       </div>
