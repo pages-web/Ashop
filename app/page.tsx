@@ -29,6 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function Home() {
   return (
     <div className="min-h-screen">
+      <h2>test</h2>
       <MainBanner />
       <CategoryCard />
       <Display />
