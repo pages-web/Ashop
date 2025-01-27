@@ -24,7 +24,7 @@ const BuyButton = () => {
           storefront.allowGuestAccount && !user && !userType ? '/auth' : '/cart'
         }
       >
-        Худалдан авахa
+        Худалдан авах
       </Link>
     </Button>
   );

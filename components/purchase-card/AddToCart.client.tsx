@@ -54,7 +54,7 @@ const AddToCart = (product: IProduct) => {
             setOpenCart(true);
             setCount(possibleQuantity > 0 ? 1 : 0);
           }}
-          // disabled={disableActions || loading}
+          disabled={disableActions || loading}
         >
           Сагсанд нэмэх
         </Button>
@@ -66,7 +66,7 @@ const AddToCart = (product: IProduct) => {
             setOpenCart(true);
             setCount(possibleQuantity > 0 ? 1 : 0);
           }}
-          // disabled={disableActions || loading}
+          disabled={disableActions || loading}
         >
           Худалдан авах
         </Button>
