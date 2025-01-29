@@ -31,7 +31,7 @@ const RecommendedProducts = ({
       <CarouselContent>
         {data.pricingPlans.map((item: any, index: number) => (
           <CarouselItem
-            className="basis-1/2 lg:basis-1/3 xl:basis-1/4 2xl:basis-1/6"
+            className="basis-1/2 lg:basis-1/5 xl:basis-1/3 2xl:basis-1/5"
             key={index}
           >
             <SalesProductItem products={item.products} value={item.value} />

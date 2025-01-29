@@ -2,9 +2,7 @@ import { getKbArticlesByCode } from '@/sdk/queries/kb';
 import {
   Carousel,
   CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+  CarouselItem
 } from '../ui/carousel';
 import { IArticle } from '@/types/kb.types';
 import Link from 'next/link';
@@ -30,17 +28,17 @@ const MainBanner = async () => {
 
 const BannerItem = ({ _id, image, summary, attachments }: IArticle) => {
   return (
-    <CarouselItem className="flex-basis-[1] pl-0" key={_id}>
+    <CarouselItem key={_id}>
       <Link
-        className="relative aspect-[4/5] lg:aspect-[13/5] lg:rounded-2xl overflow-hidden block"
+        className="aspect-[4/5] lg:aspect-[13/5] block"
         href={summary || '/'}
       >
         <Image
           src={image?.url}
           alt=""
-          width={1536}
+          width={900}
           height={600}
-          className="absolute object-cover inset-0 object-center lg:block"
+          className="absolute object-cover inset-0 object-center lg:mt-0 mt-2 lg:ml-56 sm:ml-0"
           skipAnimation
         />
         <Image

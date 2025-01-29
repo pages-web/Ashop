@@ -26,7 +26,7 @@ const SaleProduct = ({
   return (
     <div
       className={cn(
-        "flex-shrink-0 bg-[#f0f0f0] border rounded-lg shadow-md transition-all duration-300 p-3 mb-5 mx-auto w-[100%] sm:w-[200px] sm:ml-5 sm:mr-5", // Adjust width for mobile and sm screens
+        "flex-shrink-0 bg-[#f0f0f0] border rounded-lg shadow-md transition-all duration-300 p-3 mb-5 mx-auto w-[100%] sm:w-[200px] sm:ml-5 sm:mr-5",
         className
       )}
       {...rest}
@@ -36,9 +36,7 @@ const SaleProduct = ({
         <Link
           href={{
             pathname: "/product/[id]",
-            query: {
-              value: discountValue,
-            },
+            query: { value: discountValue },
           }}
           as={`/product/${_id}`}
           className="relative block w-full left-0 overflow-hidden pb-[100%] rounded-lg bg-white"
@@ -56,12 +54,12 @@ const SaleProduct = ({
       <div className="p-4 text-sm">
         <Link
           href={`/product/${_id}`}
-          className="hover:text-primary line-clamp-1 block text-center sm:text-left" // Center text on mobile and left-align on sm+
+          className="hover:text-primary line-clamp-1 block text-center sm:text-left"
         >
           {name}
         </Link>
         <span
-          className="block py-2 font-bold text-center sm:text-left" // Center price on mobile and left-align on sm+
+          className="block py-2 font-bold text-center sm:text-left"
           data-testid="product-card-vertical-price"
         >
           {discountValue ? (

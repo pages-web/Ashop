@@ -14,7 +14,7 @@ const Footer = async () => {
   return (
     <footer>
       {!!branchDetail && (
-        <div className="bg-neutral-100">
+        <div className="bg-neutral-300">
           <div className="container py-6 grid lg:grid-cols-4">
             <Col title="Бидний тухай">
               <FooterLink href="/about">Бидний тухай</FooterLink>

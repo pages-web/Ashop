@@ -1,6 +1,5 @@
 import { CategoryCard } from '@/components/category-card/category-card';
 import Display from '@/components/display/display-new';
-import { Heading } from '@/components/heading/heading';
 // import Display from '@/components/display/display';
 // import { Heading } from '@/components/heading/heading';
 import MainBanner from '@/components/main-banner/main-banner';
@@ -32,9 +31,8 @@ export default function Home() {
       <MainBanner />
       <CategoryCard />
       <Display />
-      <div className="container flex items-center justify-between">
-        <Heading title=""/>
-        <Button asChild variant="link" className="mb-3 lg:mb-5">
+      <div className="container flex items-center justify-end">
+        <Button asChild variant="link" className="relative lg:top-[70px] lg:right-[300px] lg:text-xl">
           <Link href="/sale-items">
             Бүгдийг үзэх
             <ChevronRight className="h-5 w-5 ml-1 -mr-2" strokeWidth={1.5} />

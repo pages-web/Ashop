@@ -1,13 +1,13 @@
 import RecommendedProducts from "@/components/sales/sales-product";
-
-
+import { Heading } from '@/components/heading/heading';
 
 const SaleList = () => {
   return (
-    <div className="min-h-screen">
-      <h1 className="title my-8 p-6 text-primary font-bold text-xl sm:text-2xl lg:text-3xl text-center  sm:w-[80%] lg:w-[400px] mx-auto">
-        Хямдралтай бүтээгдэхүүнүүд
-      </h1>
+    <div>
+      <Heading  
+        title="Хямдралтай бүтээгдэхүүнүүд" 
+        className="sm:text-center lg:mt-16 lg:mb-8 lg:text-2xl relative sm:bottom-[35px]" 
+      />
       <div className="overflow-x-auto">
         <RecommendedProducts />
       </div>

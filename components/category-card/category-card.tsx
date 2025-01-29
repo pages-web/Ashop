@@ -13,7 +13,10 @@ export async function CategoryCard({ ...attributes }: CategoryCardProps) {
 
   return (
     <>
-      <Heading title="Онцлох ангилалууд" className="lg:mt-16 lg:mb-8" />
+      <Heading 
+        title="Онцлох ангилалууд" 
+        className="lg:mt-16 lg:mb-8  mb-4 text-center mt-[-250px]" 
+      />
       <div
         className="container mb-10 lg:mb-16 flex flex-nowrap lg:flex-wrap lg:justify-center overflow-x-scroll no-scrollbar"
         {...attributes}
