@@ -37,7 +37,7 @@ export default function Home() {
         variant="link"
         className="mt-8 py-2 px-4 text-lg"
       >
-        <Link href="/category" className="flex items-center">
+        <Link href="/sale-items" className="flex items-center">
           Бүгдийг үзэх
           <ChevronRight className="h-6 w-6 ml-2 -mr-2" strokeWidth={1.5} />
         </Link>
