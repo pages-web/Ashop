@@ -32,12 +32,16 @@ export default function Home() {
       <CategoryCard />
       <Display />
       <div className="container flex items-center justify-end">
-        <Button asChild variant="link" className="relative lg:top-[70px] lg:right-[300px] lg:text-xl">
-          <Link href="/sale-items">
-            Бүгдийг үзэх
-            <ChevronRight className="h-5 w-5 ml-1 -mr-2" strokeWidth={1.5} />
-          </Link>
-        </Button>
+      <Button
+        asChild
+        variant="link"
+        className="mt-8 py-2 px-4 text-lg"
+      >
+        <Link href="/category" className="flex items-center">
+          Бүгдийг үзэх
+          <ChevronRight className="h-6 w-6 ml-2 -mr-2" strokeWidth={1.5} />
+        </Link>
+      </Button>
       </div>
       <div className="container mb-6 lg:mb-16">
         <Suspense>

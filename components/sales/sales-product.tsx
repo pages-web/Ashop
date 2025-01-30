@@ -28,10 +28,10 @@ const RecommendedProducts = ({
 
   return (
     <Carousel opts={{ dragFree: true }}>
-      <CarouselContent>
+      <CarouselContent className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
         {data.pricingPlans.map((item: any, index: number) => (
           <CarouselItem
-            className="basis-1/2 lg:basis-1/5 xl:basis-1/3 2xl:basis-1/5"
+            className="flex-shrink-0 w-full p-2"
             key={index}
           >
             <SalesProductItem products={item.products} value={item.value} />

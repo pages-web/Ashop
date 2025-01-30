@@ -26,7 +26,7 @@ const SaleProduct = ({
   return (
     <div
       className={cn(
-        "flex-shrink-0 bg-[#f0f0f0] border rounded-lg shadow-md transition-all duration-300 p-3 mb-5 mx-auto w-[100%] sm:w-[200px] sm:ml-5 sm:mr-5",
+        "flex-shrink-0 bg-[#f0f0f0] border rounded-lg shadow-md transition-all duration-300 p-3 mb-5 mx-auto w-full sm:w-[200px] sm:ml-5 sm:mr-5",
         className
       )}
       {...rest}

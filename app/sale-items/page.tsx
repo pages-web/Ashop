@@ -6,7 +6,7 @@ const SaleList = () => {
     <div>
       <Heading  
         title="Хямдралтай бүтээгдэхүүнүүд" 
-        className="sm:text-center lg:mt-16 lg:mb-8 lg:text-2xl relative sm:bottom-[35px]" 
+        className="sm:ml-[20px] lg:ml-0 mb-5" 
       />
       <div className="overflow-x-auto">
         <RecommendedProducts />
