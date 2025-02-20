@@ -1,13 +1,13 @@
 const Price = ({
-  amount,
-  discountValue,
+  amount = 0,
+  discountValue = 0,
   className,
 }: {
-  amount: number;
+  amount?: number;
   className?: string;
   discountValue?: number;
 } & React.ComponentProps<"p">) => {
-  const total = discountValue ? amount * (1 - discountValue / 100) : amount;
+  const total = amount * (1 - discountValue / 100);
   return <span className={className}>{total.toLocaleString()}₮</span>;
 };
 
