@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import { Separator } from '../ui/separator';
-import CategoryNavContainer from '@/containers/products/category-nav';
-import { getConfig } from '@/sdk/queries/auth';
-import Image from '@/components/ui/image';
-import { Suspense } from 'react';
+import Link from "next/link";
+import { Separator } from "../ui/separator";
+import CategoryNavContainer from "@/containers/products/category-nav";
+import { getConfig } from "@/sdk/queries/auth";
+import Image from "@/components/ui/image";
+import { Suspense } from "react";
 
 export async function NavbarTop({
   children,
@@ -16,7 +16,7 @@ export async function NavbarTop({
   return (
     <header
       className={
-        'h-14 lg:h-[111px] z-50 lg:sticky lg:-top-3 lg:pt-2.5 lg:shadow-md bg-primary text-white'
+        "h-14 lg:h-[111px] z-50 lg:sticky lg:-top-3 lg:pt-2.5 lg:shadow-md bg-primary text-white"
       }
       {...rest}
     >
@@ -44,7 +44,7 @@ export async function NavbarTop({
         <Separator className="bg-background/10" />
         <div className="container py-0.5 flex">
           <Suspense>
-            {/* <CategoryNavContainer /> */}
+            <CategoryNavContainer />
           </Suspense>
         </div>
       </div>

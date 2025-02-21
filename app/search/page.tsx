@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import ProductCard from '@/components/product-card/product-card';
-import ProductsContainer from '@/components/product-card/products-container';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Loading } from '@/components/ui/loading';
-import { useProducts } from '@/sdk/queries/products.client';
-import { IProduct } from '@/types/product.types';
-import { ArrowLeftIcon, ScanSearchIcon, SearchIcon } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import ProductCard from "@/components/product-card/product-card";
+import ProductsContainer from "@/components/product-card/products-container";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Loading } from "@/components/ui/loading";
+import { useProducts } from "@/sdk/queries/products.client";
+import { IProduct } from "@/types/product.types";
+import { ArrowLeftIcon, ScanSearchIcon, SearchIcon } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 const Search = () => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const { getProducts, products, loading } = useProducts();
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const Search = () => {
             searchValue: search,
             perPage: 20,
             isKiosk: true,
-            hasSimilarity: 'config',
+            hasSimilarity: "config",
           },
         }),
       500
@@ -69,8 +69,8 @@ const Search = () => {
             />
             <span className="pb-32">
               {search
-                ? 'Хайлтын үр дүн олдсонгүй'
-                : 'Хайлтын утгаа оруулана уу...'}
+                ? "Хайлтын үр дүн олдсонгүй"
+                : "Хайлтын утгаа оруулана уу..."}
             </span>
           </div>
         )}
