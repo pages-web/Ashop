@@ -14,22 +14,27 @@ const CategoryItem = async ({ id, length }: { id: string; length: number }) => {
   return (
     <div className="container">
       <Link href={`/category?order=${order}`} aria-label={name}>
-        <div className="relative mx-auto max-sm:bottom-[300px]">
+        <div className="relative mx-auto">
           <div className="w-full h-0 pb-[100%] relative">
             <Image
               src={attachment?.url || ""}
               alt={name}
-              className="absolute inset-0 w-24 sm:w-32 md:w-40 h-24 sm:h-32 md:h-40 rounded-full object-cover custom-hover hover:scale-x-110 hover:scale-y-110 duration-200"
+              className={cn(
+                "absolute inset-0 rounded-full object-cover custom-hover hover:scale-110 duration-200",
+                length <= 20
+                  ? "w-16 h-16 sm:w-32 sm:h-32 md:w-40 md:h-40"
+                  : "w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40"
+              )}
               skipAnimation
             />
           </div>
         </div>
 
-        <div className="flex justify-center relative max-sm:bottom-[300px]">
+        <div className="flex justify-center">
           <p
             className={cn(
-              "mt-4 font-semibold no-underline text-base group-hover:underline group-hover:text-primary group-hover:font-normal group-active:text-primary max-w-40 text-center",
-              length > 5 && "font-medium text-sm"
+              "mt-4 font-semibold no-underline text-base text-center group-hover:underline group-hover:text-primary",
+              length > 20 ? "text-sm" : "text-base"
             )}
           >
             {name}
