@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "../ui/carousel";
+import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 
 import { useQuery } from "@apollo/client";
 import { queries } from "@/sdk/graphql/products";
@@ -28,12 +24,9 @@ const RecommendedProducts = ({
 
   return (
     <Carousel opts={{ dragFree: true }}>
-      <CarouselContent className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+      <CarouselContent className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 ">
         {data.pricingPlans.map((item: any, index: number) => (
-          <CarouselItem
-            className="flex-shrink-0 w-full p-2"
-            key={index}
-          >
+          <CarouselItem className="flex-shrink-0 w-full p-2" key={index}>
             <SalesProductItem products={item.products} value={item.value} />
           </CarouselItem>
         ))}

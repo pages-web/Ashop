@@ -1,15 +1,15 @@
-'use client';
-import Autoplay from 'embla-carousel-autoplay';
+"use client";
+import Autoplay from "embla-carousel-autoplay";
 
-import { Carousel, CarouselContent, CarouselItem } from '../ui/carousel';
-import Image from '../ui/image';
-import { IArticle } from '@/types/kb.types';
+import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
+import Image from "../ui/image";
+import { IArticle } from "@/types/kb.types";
 
 const settings = {
   delay: {
-    lg: 4000,
+    lg: 2000,
     sm: 2000,
-    long: 3000,
+    long: 2000,
   },
   width: {
     lg: 768,
@@ -17,25 +17,25 @@ const settings = {
     long: 768,
   },
   orientation: {
-    lg: 'horizontal',
-    sm: 'horizontal',
-    long: 'vertical',
+    lg: "horizontal",
+    sm: "horizontal",
+    long: "vertical",
   },
   className: {
-    lg: 'col-span-2 row-span-2  aspect-square lg:aspect-auto h-auto lg:mb-4',
-    sm: 'aspect-square rounded-[0.5em]',
-    long: 'col-span-2 aspect-[3/1] rounded-[0.5em]',
+    lg: "col-span-2 row-span-2  aspect-square lg:aspect-auto h-auto lg:mb-4",
+    sm: "aspect-square rounded-[0.5em]",
+    long: "col-span-2 aspect-[3/1] rounded-[0.5em]",
   },
 };
 
-type IOrientation = 'horizontal' | 'vertical';
+type IOrientation = "horizontal" | "vertical";
 
 const CarouselClient = ({
   items,
   size,
 }: {
   items: IArticle[];
-  size: 'lg' | 'sm' | 'long';
+  size: "lg" | "sm" | "long";
 }) => {
   return (
     <Carousel
@@ -64,7 +64,7 @@ const CarouselClient = ({
           </CarouselItem>
         ))}
       </CarouselContent>
-      {size === 'long' && (
+      {size === "long" && (
         <div className="h-4 w-full absolute left-0 bottom-0 bg-white" />
       )}
     </Carousel>

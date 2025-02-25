@@ -19,7 +19,7 @@ const CategoryItem = async ({ id, length }: { id: string; length: number }) => {
             <Image
               src={attachment?.url || ""}
               alt={name}
-              className="absolute inset-0 w-24 sm:w-32 md:w-40 h-24 sm:h-32 md:h-40 rounded-full object-cover custom-hover"
+              className="absolute inset-0 w-24 sm:w-32 md:w-40 h-24 sm:h-32 md:h-40 rounded-full object-cover custom-hover hover:scale-x-110 hover:scale-y-110 duration-200"
               skipAnimation
             />
           </div>

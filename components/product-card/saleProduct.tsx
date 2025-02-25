@@ -1,12 +1,12 @@
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Image from "../ui/image";
 import { IProduct } from "../../types/product.types";
 import Price from "../price/price";
+import Saleadd from "./saleadd";
 
 const DiscountBadge = ({ value }: { value: number }) => (
   <span
-    className="absolute z-20 top-2 right-2 bg-red-600 text-white text-xs font-bold px-6 py-2 rounded-md"
+    className="absolute z-20 top-2 right-2 bg-red-600 text-white text-xs font-bold px-4 py-1 rounded-md"
     aria-label={`Discount ${value}%`}
   >
     sale {value}%
@@ -20,64 +20,54 @@ const SaleProduct = ({
   attachment,
   unitPrice,
   _id,
-  hasSimilarity,
   ...rest
 }: IProduct & { className?: string; discountValue?: number }) => {
   return (
-    <div
-      className={cn(
-        "flex-shrink-0 bg-[#f0f0f0] border rounded-lg shadow-md transition-all duration-300 p-3 mb-5 mx-auto w-full sm:w-[200px] sm:ml-5 sm:mr-5",
-        className
-      )}
-      {...rest}
-    >
-      <div className="relative">
-        {discountValue && <DiscountBadge value={discountValue} />}
-        <Link
-          href={{
-            pathname: "/product/[id]",
-            query: { value: discountValue },
-          }}
-          as={`/product/${_id}`}
-          className="relative block w-full left-0 overflow-hidden pb-[100%] rounded-lg bg-white"
-        >
-          <Image
-            src={attachment?.url || ""}
-            alt={name || "Product Image"}
-            className="absolute inset-0 w-full h-full rounded-t-md object-cover p-2 hover:scale-105"
-            width={500}
-            height={500}
-            quality={100}
-          />
-        </Link>
+    <div className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-card p-4 flex flex-col justify-between min-h-96">
+      <div>
+        <div className="relative w-full h-[200px]">
+          {discountValue && <DiscountBadge value={discountValue} />}
+          <Link
+            href={`/product/${_id}`}
+            className="relative block w-full h-full overflow-hidden rounded-lg bg-white"
+          >
+            <Image
+              src={attachment?.url || ""}
+              alt={name || "Product Image"}
+              className="absolute inset-0 w-full h-full object-cover p-2 hover:scale-105"
+              width={500}
+              height={500}
+              quality={100}
+            />
+          </Link>
+        </div>
+        {name && (
+          <Link
+            href={`/product/${_id}`}
+            className="hover:text-primary block line-clamp-1 font-bold text-lg text-center mt-2"
+          >
+            {name}
+          </Link>
+        )}
       </div>
-      <div className="p-4 text-sm">
-        <Link
-          href={`/product/${_id}`}
-          className="hover:text-primary line-clamp-1 block text-center sm:text-left"
-        >
-          {name}
-        </Link>
-        <span
-          className="block py-2 font-bold text-center sm:text-left"
-          data-testid="product-card-vertical-price"
-        >
-          {discountValue ? (
-            <div className="flex items-center gap-2 justify-center sm:justify-start">
-              <Price
-                amount={unitPrice}
-                className="text-sm text-neutral-500 line-through relative right-[6px]"
-              />
-              <Price
-                amount={unitPrice}
-                discountValue={discountValue}
-                className="text-base relative right-[8px]"
-              />
-            </div>
-          ) : (
-            <Price amount={unitPrice} discountValue={discountValue} />
+      <div className="text-center mt-2">
+        <div className="flex gap-3 items-center">
+          {discountValue && (
+            <span className="text-primary">
+              <Price amount={unitPrice} discountValue={discountValue} />
+            </span>
           )}
-        </span>
+          <span className="line-through text-red-800 text-xs">
+            <Price amount={unitPrice} />
+          </span>
+          <Saleadd
+            {...rest}
+            name={name}
+            unitPrice={unitPrice}
+            _id={_id}
+            attachment={attachment}
+          />
+        </div>
       </div>
     </div>
   );
