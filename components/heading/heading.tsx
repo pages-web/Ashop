@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils";
 
 export type HeadingProps = {
   title: string;
@@ -7,7 +7,7 @@ export type HeadingProps = {
 };
 
 export function Heading({
-  tag = 'h1',
+  tag = "h1",
   className,
   title,
   ...attributes
@@ -17,7 +17,7 @@ export function Heading({
   return (
     <Tag
       className={cn(
-        'text-center mb-3 lg:mb-4 font-semibold text-xl lg:text-2xl',
+        "text-center mb-3 lg:mb-4 font-semibold text-xl lg:text-2xl",
         className
       )}
       {...attributes}

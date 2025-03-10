@@ -12,19 +12,14 @@ const CategoryItem = async ({ id, length }: { id: string; length: number }) => {
   const { order, attachment, name } = category;
 
   return (
-    <div className="container">
+    <div>
       <Link href={`/category?order=${order}`} aria-label={name}>
-        <div className="relative mx-auto">
-          <div className="w-full h-0 pb-[100%] relative">
+        <div className="">
+          <div className="relative pb-[100%] mr-0">
             <Image
               src={attachment?.url || ""}
               alt={name}
-              className={cn(
-                "absolute inset-0 rounded-full object-cover custom-hover hover:scale-110 duration-200",
-                length <= 20
-                  ? "w-16 h-16 sm:w-32 sm:h-32 md:w-40 md:h-40"
-                  : "w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40"
-              )}
+              className="h-2 w-2 rounded-3xl"
               skipAnimation
             />
           </div>
