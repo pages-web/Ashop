@@ -29,9 +29,9 @@ const DefaultLayout = ({ children }: React.PropsWithChildren) => {
             <NavWish productId={""} />
           </Link>
           <CartTrigger />
-          <p className="hidden sm:block">Сагс</p>
+          <p className="hidden sm:block ">Сагс</p>
           <CurrentUser />
-          <p className="hidden sm:block">Профайл</p>
+          <p className="hidden sm:block ">Профайл</p>
         </nav>
       </NavbarTop>
       {children}
