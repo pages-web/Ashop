@@ -56,7 +56,7 @@ const CarouselClient = ({
               src={car.image?.url}
               width={900}
               height={400}
-              className="md:w-[150vh] lg:w-[170vh] h-[80vh] container"
+              className="w-full h-[70vh] object-cover"
             />
           </CarouselItem>
         ))}

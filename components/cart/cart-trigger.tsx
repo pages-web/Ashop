@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import { cartSheetAtom } from '@/store';
-import { useAtom, useAtomValue } from 'jotai';
-import { useEffect, useState } from 'react';
-import { Button } from '../ui/button';
-import { ShoppingCartIcon } from 'lucide-react';
-import dynamic from 'next/dynamic';
-import { LoadingOverlay } from '../ui/loading';
-import { Badge } from '../ui/badge';
-import CartCount from './cart-count';
-import { cartLengthAtom } from '@/store/cart.store';
+import { cartSheetAtom } from "@/store";
+import { useAtom, useAtomValue } from "jotai";
+import { useEffect, useState } from "react";
+import { Button } from "../ui/button";
+import { ShoppingCartIcon } from "lucide-react";
+import dynamic from "next/dynamic";
+import { LoadingOverlay } from "../ui/loading";
+import { Badge } from "../ui/badge";
+import CartCount from "./cart-count";
+import { cartLengthAtom } from "@/store/cart.store";
 
-const Cart = dynamic(() => import('./cart'), { loading: LoadingOverlay });
+const Cart = dynamic(() => import("./cart"), { loading: LoadingOverlay });
 
 const CartTrigger = () => {
   const [openSheet, setOpenSheet] = useState(false);

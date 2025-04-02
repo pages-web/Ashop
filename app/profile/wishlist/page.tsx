@@ -1,14 +1,18 @@
-import ProfileLayout from '../profile-layout';
+import ProductsContainer from "@/components/product-card/products-container";
+import ProfileLayout from "../profile-layout";
+import Wishlist from "./Wishlist";
 
-const Wishlist = () => {
+const WishlistPage = () => {
   return (
     <ProfileLayout
       title="Хүслийн жагсаалт"
       description="Танд таалагдсан бүтээгдэхүүнүүд"
     >
-      Enter
+      <ProductsContainer>
+        <Wishlist />
+      </ProductsContainer>
     </ProfileLayout>
   );
 };
 
-export default Wishlist;
+export default WishlistPage;

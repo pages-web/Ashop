@@ -1,4 +1,3 @@
-import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { NavbarTop } from "./navbar-top";
 import { Button } from "../ui/button";
 import Search from "../search/search";
@@ -9,6 +8,7 @@ import Link from "next/link";
 import CartTrigger from "../cart/cart-trigger";
 import CurrentUser from "@/containers/auth/current-user";
 import { Suspense } from "react";
+import NavWish from "../purchase-card/navwhish";
 
 const DefaultLayout = ({ children }: React.PropsWithChildren) => {
   return (
@@ -16,20 +16,22 @@ const DefaultLayout = ({ children }: React.PropsWithChildren) => {
       <NavbarTop>
         <Button
           variant="ghost"
-          className="hover:bg-background/10 hover:text-white hidden lg:inline-flex"
+          className="hover:bg-background/10 hover:text-white sm:flex hidden"
           asChild
         >
-          <Link href={"/category"}>
-            Дэлгүүр
-            {/* <ChevronDownIcon className="h-4 w-4 ml-1" /> */}
-          </Link>
+          <Link href={"/category"}>Дэлгүүр</Link>
         </Button>
-        <Suspense fallback={<div className="lg:block flex-1" />}>
-          <Search className=" lg:block flex-1 max-w-2xl mr-auto" />
+        <Suspense fallback={<div className="flex-1" />}>
+          <Search className="flex-1 max-w-full sm:max-w-2xl sm:mr-auto" />
         </Suspense>
-        <nav className=" lg:flex lg:flex-row lg:flex-nowrap gap-4">
+        <nav className="flex gap-2 sm:gap-4 items-center">
+          <Link href="/profile/wishlist">
+            <NavWish productId={""} />
+          </Link>
           <CartTrigger />
+          <p className="hidden sm:block">Сагс</p>
           <CurrentUser />
+          <p className="hidden sm:block">Профайл</p>
         </nav>
       </NavbarTop>
       {children}

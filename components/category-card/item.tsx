@@ -15,11 +15,11 @@ const CategoryItem = async ({ id, length }: { id: string; length: number }) => {
     <div>
       <Link href={`/category?order=${order}`} aria-label={name}>
         <div className="">
-          <div className="relative pb-[100%] mr-0">
+          <div className="relative pb-[60%] mr-0">
             <Image
               src={attachment?.url || ""}
               alt={name}
-              className="h-2 w-2 rounded-3xl"
+              className="rounded-3xl"
               skipAnimation
             />
           </div>
@@ -28,7 +28,7 @@ const CategoryItem = async ({ id, length }: { id: string; length: number }) => {
         <div className="flex justify-center">
           <p
             className={cn(
-              "mt-4 font-semibold no-underline text-base text-center group-hover:underline group-hover:text-primary",
+              "font-semibold no-underline text-base text-center group-hover:underline group-hover:text-primary",
               length > 20 ? "text-sm" : "text-base"
             )}
           >

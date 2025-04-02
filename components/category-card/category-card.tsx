@@ -12,9 +12,9 @@ export async function CategoryCard({ ...attributes }: CategoryCardProps) {
   return (
     <>
       <div className="container" {...attributes}>
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-12 md:mt-40">
+        <div className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-12 md:mt-10 mt-5">
           {(config.initialCategoryIds || []).map((_id: string) => (
-            <div className="pb-[100%]">
+            <div>
               <CategoryItem
                 id={_id}
                 length={config.initialCategoryIds.length}

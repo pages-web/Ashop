@@ -1,16 +1,16 @@
-'use client';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
-import { useCurrentUser } from '@/sdk/queries/auth.client';
-import { UserIcon, Loader2Icon } from 'lucide-react';
-import Link from 'next/link';
-import { useEffect } from 'react';
+"use client";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { useCurrentUser } from "@/sdk/queries/auth.client";
+import { UserIcon, Loader2Icon } from "lucide-react";
+import Link from "next/link";
+import { useEffect } from "react";
 
 const CurrentUser = () => {
   const { currentUser, setLoading, loading } = useCurrentUser();
 
   useEffect(() => {
-    if (!sessionStorage.getItem('token')) {
+    if (!sessionStorage.getItem("token")) {
       setLoading(false);
     }
   }, []);
@@ -29,8 +29,8 @@ const CurrentUser = () => {
         <Link href="/profile">
           <AvatarImage src={avatar} alt={currentUser.firstName} />
           <AvatarFallback>
-            {(firstName || 'P')[0]}
-            {(lastName || '')[0]}
+            {(firstName || "P")[0]}
+            {(lastName || "")[0]}
           </AvatarFallback>
         </Link>
       </Avatar>
@@ -40,7 +40,7 @@ const CurrentUser = () => {
   return (
     <Button
       size="icon"
-      variant={'ghost'}
+      variant={"ghost"}
       className="hover:bg-background/10 hover:text-white"
       asChild
     >

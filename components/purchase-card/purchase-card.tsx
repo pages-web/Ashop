@@ -1,12 +1,13 @@
-import { IProductDetail } from '@/types/products.types';
-import { Card, CardContent, CardHeader } from '../ui/card';
-import Price from '../price/price';
-import { Separator } from '../ui/separator';
-import AddToCart from './AddToCart.client';
-import { cn } from '@/lib/utils';
-import Remainder from './remainder.client';
-import ProductReview from './productReview';
-import ChooseProduct from './chooseProduct';
+import { IProductDetail } from "@/types/products.types";
+import { Card, CardContent, CardHeader } from "../ui/card";
+import Price from "../price/price";
+import { Separator } from "../ui/separator";
+import AddToCart from "./AddToCart.client";
+import { cn } from "@/lib/utils";
+import Remainder from "./remainder.client";
+import ProductReview from "./productReview";
+import ChooseProduct from "./chooseProduct";
+import WhisListCard from "./Detail";
 
 const PurchaseCard = ({
   name,
@@ -37,15 +38,21 @@ const PurchaseCard = ({
         </div> */}
         <h1
           className={cn(
-            'font-bold capitalize line-clamp-2',
-            name.length > 20 ? 'text-xl' : 'text-2xl'
+            "font-bold capitalize line-clamp-2",
+            name.length > 20 ? "text-xl" : "text-2xl"
           )}
         >
           {name}
         </h1>
+        <WhisListCard productId={""} />
         <div className="pt-3 sm:pt-2 w-full">
-          <p className="text-gray-500 text-sm p-2">Бүтээгдэхүүний код: {code}</p>
-          <Price amount={unitPrice} className="mr-2 pt-2 font-bold text-3xl sm:text-2xl" />
+          <p className="text-gray-500 text-sm p-2">
+            Бүтээгдэхүүний код: {code}
+          </p>
+          <Price
+            amount={unitPrice}
+            className="mr-2 pt-2 font-bold text-3xl sm:text-2xl"
+          />
         </div>
         <ProductReview productId={product._id} />
         <Remainder remainder={remainder} />
