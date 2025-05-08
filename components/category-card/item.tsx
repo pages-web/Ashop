@@ -12,28 +12,31 @@ const CategoryItem = async ({ id, length }: { id: string; length: number }) => {
   const { order, attachment, name } = category;
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <Link href={`/category?order=${order}`} aria-label={name}>
-        <div className="">
-          <div className="relative pb-[60%] mr-0">
+        <div className="group">
+          <div className="relative aspect-[4/3] max-w-[200px] w-full">
             <Image
               src={attachment?.url || ""}
               alt={name}
-              className="rounded-3xl"
+              className="rounded-xl object-cover"
+              style={{ objectFit: "cover" }}
+              width={150}
+              height={150}
               skipAnimation
             />
           </div>
-        </div>
 
-        <div className="flex justify-center">
-          <p
-            className={cn(
-              "font-semibold no-underline text-base text-center group-hover:underline group-hover:text-primary",
-              length > 20 ? "text-sm" : "text-base"
-            )}
-          >
-            {name}
-          </p>
+          <div className="flex justify-center mt-2">
+            <p
+              className={cn(
+                "font-semibold no-underline text-base text-center group-hover:underline group-hover:text-primary",
+                length > 20 ? "text-sm" : "text-base"
+              )}
+            >
+              {name}
+            </p>
+          </div>
         </div>
       </Link>
     </div>

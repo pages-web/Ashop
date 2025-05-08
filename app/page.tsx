@@ -1,7 +1,5 @@
 import { CategoryCard } from "@/components/category-card/category-card";
 import Display from "@/components/display/display-new";
-// import Display from '@/components/display/display';
-// import { Heading } from '@/components/heading/heading';
 import { Button } from "@/components/ui/button";
 import { getConfig } from "@/sdk/queries/auth";
 import { ChevronRight } from "lucide-react";
@@ -40,7 +38,7 @@ export default function Home() {
       </div>
       <div className="container mb-6 lg:mb-16">
         <Suspense>
-          {/* <RecommendedProducts categoryId='_XSGanUrzPJxMXV0PlbYY' /> */}
+          {/* <RecommendedProducts categoryId="_XSGanUrzPJxMXV0PlbYY" /> */}
           <SaleList />
         </Suspense>
       </div>
