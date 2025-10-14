@@ -1,39 +1,54 @@
+import * as React from "react";
 import { getConfig } from "@/sdk/queries/auth";
+import { ICategory } from "@/types/products.types";
+import { Heading } from "../heading/heading";
 import CategoryItem from "./item";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
+interface CategoryWithImage extends ICategory {
+  image: string;
+}
 
 export type CategoryCardProps = {};
 
 export async function CategoryCard({ ...attributes }: CategoryCardProps) {
   const { config } = await getConfig();
-  const ids: string[] = config?.initialCategoryIds || [];
 
-  if (!ids.length) return null;
+  if (!(config.initialCategoryIds || []).length) return null;
 
   return (
-    <div className="container" {...attributes}>
-      <div className="md:grid md:grid-cols-3 md:gap-4 md:justify-items-center">
-        <div className="flex w-full justify-center md:col-span-3 gap-5">
-          {ids.slice(0, 3).map((id: string) => (
-            <div key={id} className="w-full max-w-xs">
-              <CategoryItem id={id} length={ids.length} />
-            </div>
+    <div className="container">
+      <Heading title="Онцлох ангилалууд" className="md:mt-16 md:mb-8" />
+
+      <Carousel
+        opts={{
+          align: "start",
+        }}
+        className="w-full mb-10 md:mb-16"
+      >
+        <CarouselContent>
+          {(config.initialCategoryIds || []).map((_id: string) => (
+            <CarouselItem
+              key={_id}
+              className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6"
+            >
+              <CategoryItem
+                id={_id}
+                length={config.initialCategoryIds.length}
+              />
+            </CarouselItem>
           ))}
-        </div>
-        <div className="flex w-full justify-center md:col-span-3">
-          {ids.slice(3, 5).map((id: string) => (
-            <div key={id} className="w-full max-w-xs h-40">
-              <CategoryItem id={id} length={ids.length} />
-            </div>
-          ))}
-        </div>
-        {ids[5] && (
-          <div className="flex w-full justify-center md:col-span-1 md:col-start-2">
-            <div className="w-full max-w-xs h-40">
-              <CategoryItem id={ids[5]} length={ids.length} />
-            </div>
-          </div>
-        )}
-      </div>
+        </CarouselContent>
+
+        <CarouselPrevious className="hidden md:flex" />
+        <CarouselNext className="hidden md:flex" />
+      </Carousel>
     </div>
   );
 }

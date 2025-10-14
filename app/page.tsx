@@ -8,6 +8,9 @@ import { Metadata } from "next/types";
 import { Suspense } from "react";
 import SaleList from "./sale-items/page";
 import GridBanner from "@/components/grid-banner/grid-banner";
+import MainBanner from "@/components/main-banner/main-banner";
+import { Heading } from "@/components/heading/heading";
+import RecommendedProducts from "@/components/recommended-products/recommended-products";
 
 export const revalidate = 300;
 
@@ -25,21 +28,28 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function Home() {
   return (
     <div className="min-h-screen">
-      <GridBanner />
+      <MainBanner />
+      {/* <ScreenBanner /> */}
       <CategoryCard />
+      {/* <Suspense>
+        <GridBanner />
+      </Suspense> */}
+      <div className="container mb-6 md:mb-16">
+        <Suspense>{/* <SpecialRecommendedProducts /> */}</Suspense>
+      </div>
       <Display />
-      <div className="container flex items-center justify-end">
-        <Button asChild variant="link" className="mt-8 py-2 px-4 text-lg">
-          <Link href="/sale-items" className="flex items-center">
-            Бүгдийг үзэх
-            <ChevronRight className="h-6 w-6 ml-2 -mr-2" strokeWidth={1.5} />
+      <div className="container flex items-center justify-between">
+        <Heading title="Сүүлд нэмэгдсэн" className=" text-left md:mb-5" />
+        <Button asChild variant="link" className="mb-3 md:mb-5">
+          <Link href="/category">
+            Цааш үзэх
+            <ChevronRight className="h-5 w-5 ml-1 -mr-2" strokeWidth={1.5} />
           </Link>
         </Button>
       </div>
-      <div className="container mb-6 lg:mb-16">
+      <div className="container mb-6 md:mb-16">
         <Suspense>
-          {/* <RecommendedProducts categoryId="_XSGanUrzPJxMXV0PlbYY" /> */}
-          <SaleList />
+          <RecommendedProducts />
         </Suspense>
       </div>
     </div>
