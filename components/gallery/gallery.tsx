@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import Image from '../ui/image';
+import Image from "../ui/image";
 import {
   Carousel,
   CarouselApi,
   CarouselContent,
   CarouselItem,
-} from '../ui/carousel';
-import { memo, useCallback, useEffect, useState } from 'react';
-import { cn } from '@/lib/utils';
-import { IAttachment } from '@/types';
+} from "../ui/carousel";
+import { memo, useCallback, useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
+import { IAttachment } from "@/types";
 
 const Gallery = ({ attachments = [] }: { attachments: IAttachment[] }) => {
   const [emblaMainApi, setApi] = useState<CarouselApi>();
@@ -33,21 +33,21 @@ const Gallery = ({ attachments = [] }: { attachments: IAttachment[] }) => {
   useEffect(() => {
     if (!emblaMainApi) return;
     onSelect();
-    emblaMainApi.on('select', onSelect);
-    emblaMainApi.on('reInit', onSelect);
+    emblaMainApi.on("select", onSelect);
+    emblaMainApi.on("reInit", onSelect);
   }, [emblaMainApi, onSelect]);
 
   return (
     <div className="flex flex-row-reverse gap-6 justify-stretch">
       <Carousel className="flex-1" setApi={(ap) => setApi(ap)}>
         <CarouselContent className="ml-0">
-          {attachments.map((attachment) => (
+          {attachments?.reverse().map((attachment) => (
             <CarouselItem
               className="relative aspect-square pl-0"
               key={attachment?.url}
             >
               <Image
-                src={attachment?.url || ''}
+                src={attachment?.url || ""}
                 height={1024}
                 width={1024}
                 quality={100}
@@ -61,26 +61,26 @@ const Gallery = ({ attachments = [] }: { attachments: IAttachment[] }) => {
       <Carousel
         orientation="vertical"
         className={cn(
-          'w-28 hidden lg:block',
-          attachments.length === 1 && 'lg:hidden'
+          "w-28 hidden lg:block",
+          attachments.length === 1 && "lg:hidden"
         )}
-        opts={{ containScroll: 'keepSnaps', dragFree: true }}
+        opts={{ containScroll: "keepSnaps", dragFree: true }}
         setApi={(ap) => setThumbApi(ap)}
       >
         <CarouselContent className="basis-[5rem] xl:max-h-[600px] mt-0">
           {attachments.map((item, index) => (
             <CarouselItem
               className={cn(
-                'w-28 h-28 border-2 transition-colors pt-0 rounded-xl overflow-hidden p-0 aspect-square',
+                "w-28 h-28 border-2 transition-colors pt-0 rounded-xl overflow-hidden p-0 aspect-square",
                 selectedIndex === index
-                  ? 'border-primary'
-                  : 'border-transparent'
+                  ? "border-primary"
+                  : "border-transparent"
               )}
               key={item?.url}
               onClick={() => onThumbClick(index)}
             >
               <Image
-                src={item?.url || ''}
+                src={item?.url || ""}
                 height={164}
                 width={164}
                 alt=""

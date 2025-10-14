@@ -18,10 +18,14 @@ import ProductAccordion from "@/components/product-accordion/product-accordion";
 
 export const revalidate = 300;
 
-export async function generateMetadata({ params }:{ params:Promise<{ slug: string }>}) {
-  const {slug} = await params;
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
   const { product } = await getProductDetail({
-    variables: { _id:slug },
+    variables: { _id: slug },
   });
 
   if (!product) return notFound();
@@ -113,7 +117,7 @@ const Product = async ({ params, searchParams }: any) => {
           .concat(dynamicBreadcrumbs)
           .concat([{ name, link: `/product/${_id}` }])}
       >
-        <div      
+        <div
           className="lg:grid gap-x-6"
           style={{
             gridTemplateAreas: `"left-top right"
@@ -138,7 +142,7 @@ const Product = async ({ params, searchParams }: any) => {
             <Separator />
             <ProductAccordion
               activeId={_id}
-              description={description || 'empty'}
+              description={description || "empty"}
               ids={productIds}
             />
           </section>
