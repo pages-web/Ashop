@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 const commonFields = `
   _id
@@ -45,6 +45,7 @@ const products = gql`
     )  {
       ${commonFields}
       unitPrice
+      remainder
       hasSimilarity
       attachment {
         url

@@ -22,7 +22,7 @@ const RecommendedProducts = async ({
       categoryId,
       perPage: 12,
       isKiosk: true,
-      groupedSimilarity: "config",
+      // groupedSimilarity: "config",
     },
   });
   const exceptCurrent = products.filter((product) => product._id !== productId);

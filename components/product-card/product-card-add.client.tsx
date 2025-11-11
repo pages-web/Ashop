@@ -16,7 +16,9 @@ const ProductCardAdd = (product: IProduct) => {
   const openCart = useSetAtom(cartSheetAtom);
   const { checkRemainder, possibleQuantity, disableActions } =
     usePossibleQuantity(product);
-
+  console.log("checkRemainder", checkRemainder);
+  console.log("possibleQuantity", possibleQuantity);
+  console.log("disableActions", disableActions);
   useEffect(() => {
     if (clicked) {
       if (!loading) {

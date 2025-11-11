@@ -1,9 +1,9 @@
-import { cn } from '@/lib/utils';
-import Link from 'next/link';
-import Image from '../ui/image';
-import { IProduct } from '../../types/product.types';
-import ProductCardAdd from './product-card-add.client';
-import Price from '../price/price';
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+import Image from "../ui/image";
+import { IProduct } from "../../types/product.types";
+import ProductCardAdd from "./product-card-add.client";
+import Price from "../price/price";
 
 const ProductCard = ({
   className,
@@ -13,7 +13,7 @@ const ProductCard = ({
   return (
     <div
       className={cn(
-        'border border-neutral-200 rounded-md hover:shadow-lg flex-auto flex-shrink-0',
+        "border border-neutral-200 rounded-md hover:shadow-lg flex-auto flex-shrink-0",
         className
       )}
     >
@@ -23,7 +23,7 @@ const ProductCard = ({
           className="relative block w-full overflow-hidden pb-[100%]"
         >
           <Image
-            src={attachment?.url || ''}
+            src={attachment?.url || ""}
             alt=""
             className="rounded-t-md aspect-square w-full h-full absolute inset-0"
             width={500}

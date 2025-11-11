@@ -15,14 +15,10 @@ const AddToCart = (product: IProduct) => {
   const setOpenCart = useSetAtom(cartSheetAtom);
   const { checkRemainder, possibleQuantity, disableActions } =
     usePossibleQuantity(product);
-
   return (
     <div className="py-4 flex flex-col sm:flex-row gap-4 sm:gap-6">
       <div className="flex w-full sm:w-auto">
-      <Counter 
-            size="lg" 
-            disabled={disableActions} 
-          >
+        <Counter size="lg" disabled={disableActions}>
           <CounterButton
             minus
             onClick={() => setCount((prev) => (prev > 1 ? prev - 1 : 1))}
