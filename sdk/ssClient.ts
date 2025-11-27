@@ -1,6 +1,6 @@
-import { registerApolloClient } from '@apollo/experimental-nextjs-app-support/rsc';
-import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
+import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rsc";
+import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 
 export const { getClient } = registerApolloClient(() => {
   const httpLink = new HttpLink({
@@ -12,6 +12,8 @@ export const { getClient } = registerApolloClient(() => {
     return {
       headers: {
         ...headers,
+        "Access-Control-Allow-Origin": `${process.env.NEXT_PUBLIC_MAIN_API_DOMAIN}/graphql`,
+        "erxes-app-token": process.env.NEXT_PUBLIC_ERXES_APP_TOKEN,
         cookie,
       },
     };
