@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   HomeIcon,
@@ -7,43 +7,43 @@ import {
   SearchIcon,
   ShoppingCart,
   User2Icon,
-} from 'lucide-react';
-import { Button, ButtonProps } from '../ui/button';
-import { cn } from '@/lib/utils';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import BottomProfile from './bottom-profile';
-import { memo } from 'react';
-import { Badge } from '@/components/ui/badge';
-import CartCount from '../cart/cart-count';
-import { useSetAtom } from 'jotai';
-import { cartSheetAtom } from '@/store';
+} from "lucide-react";
+import { Button, ButtonProps } from "../ui/button";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import BottomProfile from "./bottom-profile";
+import { memo } from "react";
+import { Badge } from "@/components/ui/badge";
+import CartCount from "../cart/cart-count";
+import { useSetAtom } from "jotai";
+import { cartSheetAtom } from "@/store";
 
 const getItems = () => [
   {
-    label: 'Эхлэл',
+    label: "Эхлэл",
     Icon: HomeIcon,
-    path: '/',
+    path: "/",
   },
   {
-    label: 'Дэлгүүр',
+    label: "Дэлгүүр",
     Icon: MenuIcon,
-    path: '/category',
+    path: "/category",
   },
   {
-    label: 'Хайх',
+    label: "Хайх",
     Icon: SearchIcon,
-    path: '/search',
+    path: "/search",
   },
   {
-    label: 'Сагс',
+    label: "Сагс",
     Icon: ShoppingCart,
-    path: '/cart',
+    path: "/cart",
   },
   {
-    label: 'Профайл',
+    label: "Профайл",
     Icon: User2Icon,
-    path: '/profile',
+    path: "/profile",
   },
 ];
 
@@ -53,10 +53,10 @@ const BottomNav = () => {
   return (
     <div className="z-50 w-full fixed bottom-0 left-0 flex flex-row items-stretch lg:hidden bg-primary">
       {getItems().map(({ label, Icon, path }) => {
-        if (path === '/profile')
+        if (path === "/profile")
           return <BottomProfile key={label} Icon={Icon} />;
 
-        if (path === '/cart')
+        if (path === "/cart")
           return (
             <BottomNavItem
               label={label}
@@ -65,7 +65,7 @@ const BottomNav = () => {
               path={pathname}
               onClick={() => openCart(true)}
               key={label}
-              className="bg-primary hover:bg-primary"
+              className="bg-primary text-white hover:bg-primary"
             >
               <Badge
                 variant="outline"
@@ -107,8 +107,9 @@ export const BottomNavItem = memo(function Item({
   return (
     <Button
       className={cn(
-        'flex-col h-auto w-full gap-1 rounded-none px-0 pb-1.5 pt-3 relative hover:bg-active',
-        path === pathname && 'bg-active',
+        "flex-col h-auto w-full gap-1 rounded-none px-0 pb-1.5 pt-3 relative hover:bg-active",
+        path === pathname &&
+          "bg-white text-black [&_svg]:text-black [&_svg]:stroke-black", // ⭐ active style
         className
       )}
       key={label}

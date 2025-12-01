@@ -1,25 +1,25 @@
-import { getKbArticlesByCode } from '@/sdk/queries/kb';
+import { getKbArticlesByCode } from "@/sdk/queries/kb";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
-  CarouselPrevious
-} from '../ui/carousel';
-import { IArticle } from '@/types/kb.types';
-import Link from 'next/link';
-import Image from '../ui/image';
+  CarouselPrevious,
+} from "../ui/carousel";
+import { IArticle } from "@/types/kb.types";
+import Link from "next/link";
+import Image from "../ui/image";
 
 const MainBanner = async () => {
-  const { articles } = await getKbArticlesByCode('main-banner');
+  const { articles } = await getKbArticlesByCode("main-banner");
 
   if (!(articles || []).length) return <div className="mt-6 md:mt-12" />;
 
   return (
-    <div className="md:container">
+    <div className="md:container hidden md:block">
       <Carousel className="mb-4 md:mt-4 md:mb-8">
         <CarouselContent className="ml-0">
-          {articles.map(article => (
+          {articles.map((article) => (
             <BannerItem key={article._id} {...article} />
           ))}
         </CarouselContent>
@@ -35,7 +35,7 @@ const BannerItem = ({ _id, image, summary, attachments }: IArticle) => {
     <CarouselItem className="flex-basis-[1] pl-0" key={_id}>
       <Link
         className="relative aspect-[4/5] md:aspect-[13/5] md:rounded-2xl overflow-hidden block"
-        href={summary || '/'}
+        href={summary || "/"}
       >
         <Image
           src={image?.url}
@@ -46,7 +46,7 @@ const BannerItem = ({ _id, image, summary, attachments }: IArticle) => {
           skipAnimation
         />
         <Image
-          src={(attachments || [])[0]?.url || ''}
+          src={(attachments || [])[0]?.url || ""}
           alt=""
           width={1536}
           height={600}

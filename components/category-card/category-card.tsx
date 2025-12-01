@@ -23,7 +23,7 @@ export async function CategoryCard({ ...attributes }: CategoryCardProps) {
   if (!(config.initialCategoryIds || []).length) return null;
 
   return (
-    <div className="container">
+    <div className="container mt-16 md:mt-2">
       <Heading title="Онцлох ангилалууд" className="md:mt-16 md:mb-8" />
 
       <Carousel
