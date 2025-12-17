@@ -1,22 +1,19 @@
-'use client';
+"use client";
 
-import { itemsAtom } from '@/store/order.store';
-import { useAtomValue } from 'jotai';
-import { Badge } from '../ui/badge';
-import Price from '../price/price';
-import { getProductNameCode } from '@/lib/utils';
+import { cartAtom } from "@/store/cart.store";
+import { useAtomValue } from "jotai";
+import { Badge } from "../ui/badge";
+import Price from "../price/price";
 
 const ItemsSummary = () => {
-  const items = useAtomValue(itemsAtom);
+  const items = useAtomValue(cartAtom);
 
   return (
     <>
       {items.map((item) => (
         <div className="flex justify-between items-start" key={item._id}>
-          <div className="line-clamp-1 pr-2 text-sm">
-            {getProductNameCode(item.productName).name}
-          </div>
-          <div className="flex justify-between w-1/3 flex-none">
+          {item.productName}
+          <div className="flex justify-between w-1/3">
             <Badge variant="secondary">x{item.count}</Badge>
             <Price amount={item.unitPrice} />
           </div>

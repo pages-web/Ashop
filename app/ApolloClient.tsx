@@ -1,39 +1,39 @@
-'use client';
+"use client";
 
 import {
   ApolloClient,
   HttpLink,
   InMemoryCache,
   split,
-  ApolloProvider
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
-import { createClient } from 'graphql-ws';
-import { getMainDefinition } from '@apollo/client/utilities';
+  ApolloProvider,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
+import { createClient } from "graphql-ws";
+import { getMainDefinition } from "@apollo/client/utilities";
 
 const httpLink: any = new HttpLink({
   uri: `${process.env.NEXT_PUBLIC_MAIN_API_DOMAIN}/graphql`,
-  credentials: 'include'
+  credentials: "include",
 });
 
 const authLink = setContext((_, { headers }) => {
   const cookie = `pos-config-token=${process.env.NEXT_PUBLIC_POS_TOKEN}`;
-  const token = sessionStorage.getItem('token') || '';
+  const token = sessionStorage.getItem("token") || "";
   return {
     headers: {
       ...headers,
       cookie,
-      'erxes-app-token': process.env.NEXT_PUBLIC_ERXES_APP_TOKEN,
-      'Access-Control-Allow-Origin': `${process.env.NEXT_PUBLIC_MAIN_API_DOMAIN}/graphql`,
-      authorization: token ? `Bearer ${token}` : ''
-    }
+      "erxes-app-token": process.env.NEXT_PUBLIC_ERXES_APP_TOKEN,
+      "Access-Control-Allow-Origin": `${process.env.NEXT_PUBLIC_MAIN_API_DOMAIN}/graphql`,
+      authorization: token ? `Bearer ${token}` : "",
+    },
   };
 });
 
 const wsLink = new GraphQLWsLink(
   createClient({
-    url: `${process.env.NEXT_PUBLIC_WS_DOMAIN}`
+    url: `${process.env.NEXT_PUBLIC_WS_DOMAIN}`,
   })
 );
 
@@ -43,8 +43,8 @@ const splitLink = split(
   ({ query }) => {
     const definition = getMainDefinition(query);
     return (
-      definition.kind === 'OperationDefinition' &&
-      definition.operation === 'subscription'
+      definition.kind === "OperationDefinition" &&
+      definition.operation === "subscription"
     );
   },
   wsLink,
@@ -52,9 +52,9 @@ const splitLink = split(
 );
 
 const client = new ApolloClient({
-  ssrMode: typeof window !== 'undefined',
+  ssrMode: typeof window !== "undefined",
   cache: new InMemoryCache(),
-  link: splitLink
+  link: splitLink,
 });
 
 const Apollo = ({ children }: React.PropsWithChildren) => {

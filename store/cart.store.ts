@@ -1,9 +1,15 @@
-import { OrderItem } from '@/types/order.types';
-import { IProduct } from '@/types/product.types';
-import { atom } from 'jotai';
-import { currentUserAtom } from './auth.store';
-import { cudOrderAtom, itemsAtom, loadingOrderAtom } from './order.store';
-import { splitAtom } from 'jotai/utils';
+import { OrderItem, OrderItemInput } from "@/types/order.types";
+import { IProduct } from "@/types/product.types";
+import { atom } from "jotai";
+import { currentUserAtom } from "./auth.store";
+import {
+  cudOrderAtom,
+  itemsAtom,
+  loadingOrderAtom,
+  productItemsAtom,
+} from "./order.store";
+import { splitAtom, atomWithStorage } from "jotai/utils";
+import { getProductNameCode } from "@/lib/getProductNameCode";
 
 interface IUpdateItem {
   _id: string;
@@ -16,7 +22,7 @@ export const changeCartItem = (
 ): OrderItem[] => {
   const { _id, count } = product;
 
-  if (typeof count === 'number') {
+  if (typeof count === "number") {
     if (count === 0) return cart.filter((item) => item._id !== _id);
 
     return cart.map((item) => (item._id === _id ? { ...item, count } : item));
@@ -36,43 +42,64 @@ export const addToCart = (
     return changeCartItem({ _id, count: count + product.count }, cart);
   }
 
-  const { unitPrice, _id, name, attachment, count } = product;
+  const { unitPrice, _id, name, attachment, count, code } = product;
 
   const cartItem = {
     _id: Math.random().toString(),
     productId: _id,
     count,
     unitPrice,
-    productName: name,
+    productName: code + " - " + name,
     productImgUrl: attachment?.url,
   };
 
   return [...cart, cartItem];
 };
 
-export const cartLengthAtom = atom((get) => get(itemsAtom).length);
+export const localCartAtom = atomWithStorage<OrderItem[]>("localCart", []);
+
+export const cartAtom = atom((get) =>
+  get(currentUserAtom) ? get(productItemsAtom) : get(localCartAtom)
+);
+
+export const cartCodesAtom = atom((get) =>
+  get(cartAtom).map((item) => getProductNameCode(item.productName).code)
+);
+
+export const cartLengthAtom = atom((get) => get(cartAtom).length);
 
 export const cartTotalAtom = atom<number>((get) =>
-  get(itemsAtom).reduce(
+  (get(currentUserAtom) ? get(itemsAtom) : get(localCartAtom)).reduce(
     (total, item) => total + (item?.count || 0) * (item.unitPrice || 0),
     0
   )
 );
 
-export const cartItemAtomAtoms = splitAtom(itemsAtom);
+export const cartItemAtomAtoms = splitAtom(cartAtom);
 
 export const addToCartAtom = atom(
   (get) => get(loadingOrderAtom),
   (get, set, payload: IProduct & { count: number }) => {
-    set(itemsAtom, (prev) => addToCart(payload, prev));
-    set(cudOrderAtom, true);
+    set(get(currentUserAtom) ? itemsAtom : localCartAtom, (prev) =>
+      addToCart(payload, prev)
+    );
+    !!get(currentUserAtom) && set(cudOrderAtom, true);
   }
 );
 
 export const updateCartAtom = atom(
   (get) => get(loadingOrderAtom),
   (get, set, payload: IUpdateItem) => {
-    set(itemsAtom, (prev) => changeCartItem(payload, prev));
+    set(get(currentUserAtom) ? itemsAtom : localCartAtom, (prev) =>
+      changeCartItem(payload, prev)
+    );
     !!get(currentUserAtom) && set(cudOrderAtom, true);
+  }
+);
+
+export const setCartAtom = atom(
+  () => "",
+  (get, set, update: OrderItem[]) => {
+    set(get(currentUserAtom) ? itemsAtom : localCartAtom, update);
   }
 );

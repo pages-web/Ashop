@@ -1,27 +1,19 @@
-'use client';
-import { useAtomValue } from 'jotai';
-import Price from '../price/price';
-import { cartTotalAtom } from '@/store/cart.store';
-import { deliveryItemAtom } from '@/store/order.store';
+"use client";
+import { rawTotalAmountAtom } from "@/store/order.store";
+import { useAtomValue } from "jotai";
+import Price from "../price/price";
 
-const DeliveryFee = () => {
-  const totalAmount = useAtomValue(cartTotalAtom);
-  const deliveryProduct = useAtomValue(deliveryItemAtom);
+const DeliveryFee = ({ deliverFee }: { deliverFee?: number }) => {
+  const rawTotalAmount = useAtomValue(rawTotalAmountAtom);
   return (
     <>
       <div className="flex justify-between items-start">
         <span>Захиалгын төлбөр</span>
-        <Price
-          amount={
-            deliveryProduct
-              ? totalAmount - deliveryProduct.unitPrice
-              : totalAmount
-          }
-        />
+        <Price amount={rawTotalAmount} />
       </div>
       <div className="flex justify-between items-start">
         <span>Хүргэлтийн төлбөр</span>
-        <Price amount={deliveryProduct?.unitPrice || 0} />
+        <Price amount={deliverFee || 0} />
       </div>
     </>
   );

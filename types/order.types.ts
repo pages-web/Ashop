@@ -1,7 +1,7 @@
-import { Customer, CustomerType } from './auth.types';
-import { IProduct } from './product.types';
+import { Customer, CustomerType } from "./auth.types";
+import { IProduct } from "./product.types";
 
-export type IOrderItemStatus = 'new' | 'done' | 'confirm';
+export type IOrderItemStatus = "new" | "done" | "confirm";
 export interface OrderItemInput {
   _id: string;
   productId: string;
@@ -29,24 +29,29 @@ export interface OrderItem extends OrderItemInput {
 }
 
 export type IOrderStatus =
-  | 'new'
-  | 'doing'
-  | 'done'
-  | 'complete'
-  | 'reDoing'
-  | 'pending';
+  | "new"
+  | "doing"
+  | "done"
+  | "complete"
+  | "reDoing"
+  | "pending";
 
 export type IOrderType =
-  | 'eat'
-  | 'take'
-  | 'delivery'
-  | 'loss'
-  | 'spend'
-  | 'reject';
+  | "eat"
+  | "take"
+  | "delivery"
+  | "loss"
+  | "spend"
+  | "reject";
 
-export type IBillType = '1' | '3' | '9' | null;
+export enum IBillType {
+  person = "1",
+  company = "3",
+  inner = "9",
+  notDefined = "-9",
+}
 
-export type IOrigin = '' | 'kiosk';
+export type IOrigin = "" | "kiosk";
 
 export interface IOrderCommon {
   totalAmount: number;
@@ -95,17 +100,17 @@ export interface IPaidAmount {
 
 export interface IDeliveryInfo {
   firstName: string;
-  lastName: string;
+  lastName?: string;
   email: string;
   phone: string;
-  city: string;
-  district: string;
-  street: string;
-  detail: string;
   haveBaby: boolean;
   callBefore: boolean;
-  onlyAfternoon: boolean;
+  onlyAfternoon: boolean; //hasahgui
+  note?: string;
   companyName?: string;
+  addressId?: string;
+  street?: string;
+  district?: string;
 }
 
 export interface IOrder extends IOrderCommon {
@@ -113,8 +118,10 @@ export interface IOrder extends IOrderCommon {
   createdAt: string;
   modifiedAt?: string;
   paidDate?: string;
+  dueDate?: string;
   cashAmount?: number;
   mobileAmount?: number;
+  paidAmounts?: { _id: string; amount: string; type: string; info: any }[];
   directDiscount?: number;
   billType: IBillType;
   registerNumber?: string;
@@ -129,6 +136,12 @@ export interface IOrder extends IOrderCommon {
   sloteCode?: string;
   isPre?: boolean;
   saleStatus: string;
+  couponCode: string | null;
+  voucherId: string | null;
+  rawTotalAmount: number;
+  extraInfo: {
+    rawTotalAmount: number;
+  };
 }
 
 export interface IOrderHistory {
@@ -142,9 +155,35 @@ export interface IOrderHistory {
   paidDate: string;
 }
 
-export type IPaymentAmountType = 'amount' | 'percent' | 'items';
+export type IPaymentAmountType = "amount" | "percent" | "items";
 export type PayByProductItem = {
   _id: string;
   count: number;
   unitPrice: number;
 };
+
+export interface IAddress {
+  _id: string;
+  alias: string;
+  address1: string;
+  address2: string;
+  city: string;
+  district: string;
+  street: string;
+  more: JSON;
+  note: string;
+  addressId: string;
+}
+
+export interface IVoucher {
+  _id: string;
+  voucherIds: string[];
+  campaign: {
+    _id: string;
+    title: string;
+    description: string;
+    restrictions: {};
+    kind: "amount" | "percent";
+    value: number;
+  };
+}

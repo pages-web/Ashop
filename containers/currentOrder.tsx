@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useActiveOrder } from '@/sdk/queries/order';
+import useCurrentOrder from "@/sdk/queries/order";
 
 const CurrentOrder = () => {
-  useActiveOrder();
+  useCurrentOrder();
   return null;
 };
 

@@ -1,9 +1,9 @@
-import { type ClassValue, clsx } from 'clsx';
-import type { ReadonlyURLSearchParams } from 'next/navigation';
-import { twMerge } from 'tailwind-merge';
-import { type ApolloError } from '@apollo/client';
-import { toast } from 'sonner';
-import { ORDER_STATUSES, statusLabel } from './constants';
+import { type ClassValue, clsx } from "clsx";
+import type { ReadonlyURLSearchParams } from "next/navigation";
+import { twMerge } from "tailwind-merge";
+import { type ApolloError } from "@apollo/client";
+import { toast } from "sonner";
+import { ORDER_STATUSES, statusLabel } from "./constants";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -14,28 +14,28 @@ export const createUrl = (
   params: URLSearchParams | ReadonlyURLSearchParams
 ) => {
   const paramsString = params.toString();
-  const queryString = `${paramsString.length ? '?' : ''}${paramsString}`;
+  const queryString = `${paramsString.length ? "?" : ""}${paramsString}`;
 
   return `${pathname}${queryString}`;
 };
 
-export const READ_FILE = '/read-file?key=';
+export const READ_FILE = "/read-file?key=";
 
-export const ERXES_SASS = 'erxes-saas/';
+export const ERXES_SAAS = "erxes-saas";
 
-export const readFile = (url: string = '') => {
-  if (url.startsWith(ERXES_SASS))
+export const readFile = (url: string = "") => {
+  if (url.startsWith(ERXES_SAAS))
     return process.env.NEXT_PUBLIC_MAIN_API_DOMAIN + READ_FILE + url;
 
   if (url.includes(READ_FILE)) {
     const apiUrl = url.split(READ_FILE)[0];
-    return url.replace(apiUrl, process.env.NEXT_PUBLIC_MAIN_API_DOMAIN || '');
+    return url.replace(apiUrl, process.env.NEXT_PUBLIC_MAIN_API_DOMAIN || "");
   }
   return url;
 };
 
 export const formatNum = (num: number | string, splitter?: string): string => {
-  const checked = typeof num === 'string' ? Number(num) : num;
+  const checked = typeof num === "string" ? Number(num) : num;
 
   if (checked) {
     const options = splitter
@@ -48,34 +48,37 @@ export const formatNum = (num: number | string, splitter?: string): string => {
     return checked.toLocaleString(undefined, options);
   }
 
-  return '0';
+  return "0";
 };
 
 export const onError = (error: ApolloError) =>
-  toast.error('Алдаа гарлаа!', { description: error.message });
+  toast.error("Алдаа гарлаа!", { description: error.message });
+
+export const onErrorLogin = (error: ApolloError) =>
+  toast.error("Нэвтрэх нэр эсвэл Нууц үг буруу байна.");
 
 export const getLabel = (status: string) =>
   statusLabel[status as keyof typeof statusLabel] || status;
 
 export const getOrderStatus = (status: string, paidDate?: string) => {
-  if (!paidDate) return 'Төлбөр хүлээгдэж байна';
+  if (!paidDate) return "Төлбөр хүлээгдэж байна";
   switch (status) {
     case ORDER_STATUSES.DOING:
-      return 'Захиалга бэлтгэгдэж байна';
+      return "Захиалга бэлтгэгдэж байна";
     case ORDER_STATUSES.REDOING:
-      return 'Захиалга бэлтгэгдэж байна';
+      return "Захиалга бэлтгэгдэж байна";
     case ORDER_STATUSES.DONE:
-      return 'Захиалга хүргэлтэнд гарсан';
+      return "Захиалга хүргэлтэнд гарсан";
     case ORDER_STATUSES.COMPLETE:
-      return 'Захиалга хүргэгдсэн';
+      return "Захиалга хүргэгдсэн";
     default:
-      return 'Захиалга баталгаажсан';
+      return "Захиалга баталгаажсан";
   }
 };
 
 export function hexToHsl(hex: string) {
   // Remove the '#' symbol from the hex code
-  hex = hex.replace('#', '');
+  hex = hex.replace("#", "");
 
   // Extract the individual RGB components
   const r = parseInt(hex.substring(0, 2), 16);
@@ -144,7 +147,7 @@ export function getSimilarColorWithOpacity(
 
   // Convert blended RGB to hexadecimal
   const blendedHex =
-    '#' +
+    "#" +
     ((1 << 24) + (blendedR << 16) + (blendedG << 8) + blendedB)
       .toString(16)
       .slice(1);
@@ -152,10 +155,16 @@ export function getSimilarColorWithOpacity(
   return blendedHex;
 }
 
-export const getProductNameCode = (productName?: string) => {
-  const arr = (productName || '').split(' - ');
-  return {
-    name: arr.length >= 2 ? arr.slice(1).join('') : productName,
-    code: arr.length === 2 ? arr[0] : '',
-  };
-};
+export function capitalize(string?: string) {
+  if (!string) {
+    return "";
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export function getEnhancedNumber(number?: string) {
+  if (!number) return "";
+  const numberArr = number.split("_");
+  const numberPrefix = numberArr[0].slice(2);
+  return `${numberPrefix}_${Number(numberArr[1] || 0) + 0}`;
+}

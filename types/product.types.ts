@@ -26,6 +26,8 @@ export interface IProduct extends IProductBase {
   manufacturedDate?: string;
   hasSimilarity?: boolean;
   customFieldsData?: CustomField[];
+  customFieldsDataByFieldCode?: { [key: string]: CustomField };
+  tagIds?: string[];
 }
 
 export interface IUseProducts {

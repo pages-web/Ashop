@@ -1,17 +1,23 @@
-'use client';
-import { configAtom } from '@/store/auth.store';
-import { IConfig } from '@/types/auth.types';
-import { useSetAtom } from 'jotai';
-import { useLayoutEffect } from 'react';
+"use client";
+import { configAtom } from "@/store/auth.store";
+import { IConfig } from "@/types/auth.types";
+import { useSetAtom } from "jotai";
+import { useLayoutEffect } from "react";
+import { IProduct } from "@/types/product.types";
 
 const ConfigProvider = ({
   children,
   config,
-}: React.PropsWithChildren & { config: IConfig }) => {
+  deliveryProducts,
+}: React.PropsWithChildren & {
+  config: IConfig;
+  deliveryProducts?: IProduct[];
+}) => {
   const setConfig = useSetAtom(configAtom);
+
   const { deliveryConfig, erxesAppToken, paymentIds, name, isCheckRemainder } =
     config || {};
-
+  console.log("del", deliveryProducts);
   useLayoutEffect(() => {
     setConfig({
       deliveryConfig,
@@ -19,6 +25,7 @@ const ConfigProvider = ({
       paymentIds,
       name,
       isCheckRemainder,
+      deliveryProducts,
     });
   }, []);
 

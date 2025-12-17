@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 const login = gql`
   mutation ClientPortalLogin(
@@ -70,6 +70,14 @@ const forgotPassword = gql`
   }
 `;
 
+const erxesCustomerEdit = gql`
+  mutation CustomersEdit($id: String!, $birthDate: Date) {
+    customersEdit(_id: $id, birthDate: $birthDate) {
+      _id
+    }
+  }
+`;
+
 const userEdit = gql`
   mutation clientPortalUsersEdit(
     $_id: String!
@@ -122,15 +130,18 @@ const userChangePassword = gql`
     }
   }
 `;
-const userVerify = gql`
-  mutation ClientPortalVerifyOTP($userId: String!, $emailOtp: String) {
-    clientPortalVerifyOTP(userId: $userId, emailOtp: $emailOtp)
-  }
-`;
 
-const posChooseConfig = gql`
-  mutation PosChooseConfig($token: String!) {
-    posChooseConfig(token: $token)
+const userVerify = gql`
+  mutation ClientPortalVerifyOTP(
+    $userId: String!
+    $emailOtp: String
+    $phoneOtp: String
+  ) {
+    clientPortalVerifyOTP(
+      userId: $userId
+      emailOtp: $emailOtp
+      phoneOtp: $phoneOtp
+    )
   }
 `;
 
@@ -170,21 +181,31 @@ const socialPayLogin = gql`
   }
 `;
 
+const clientPortalLoginWithToki = gql`
+  mutation clientPortalLoginWithToki(
+    $clientPortalId: String!
+    $token: String!
+  ) {
+    clientPortalLoginWithToki(clientPortalId: $clientPortalId, token: $token)
+  }
+`;
+
 const mutations = {
   login,
   logout,
   createUser,
   getCode,
   userEdit,
+  erxesCustomerEdit,
   resetPassword,
   userChangePassword,
   forgotPassword,
   userVerify,
-  posChooseConfig,
   fbLogin,
   googleLogin,
   changePhone,
   socialPayLogin,
+  clientPortalLoginWithToki,
 };
 
 export default mutations;

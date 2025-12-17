@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 const currentUser = gql`
   query clientPortalCurrentUser {
@@ -19,6 +19,15 @@ const userDetail = gql`
     clientPortalCurrentUser {
       isEmailVerified
       isPhoneVerified
+    }
+  }
+`;
+
+const erxesCustomerDetail = gql`
+  query CustomerDetail($id: String!) {
+    customerDetail(_id: $id) {
+      _id
+      birthDate
     }
   }
 `;
@@ -64,6 +73,12 @@ const branchDetail = gql`
   }
 `;
 
-const queries = { currentUser, currentConfig, userDetail, branchDetail };
+const queries = {
+  currentUser,
+  currentConfig,
+  userDetail,
+  branchDetail,
+  erxesCustomerDetail,
+};
 
 export default queries;

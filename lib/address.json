@@ -1,0 +1,338 @@
+[
+  {
+    "id": "Баянгол",
+    "en": "Bayangol",
+    "subdistricts": [
+      {
+        "id": 1,
+        "mn": "Төмөр зам, Богд-ар хороолол орчим",
+        "en": "Ulaanbaatar train station to near the Bogd-Ar town",
+        "charge": 6000
+      },
+      {
+        "id": 2,
+        "mn": "Гранд плаза, ТБД андууд, Gem palace хүртэл",
+        "en": "From Grand Plaza, TDB Anduud to Gem palace",
+        "charge": 6000
+      },
+      {
+        "id": 3,
+        "mn": "Төмөр зам , Барс зах, Нарны зам орчим",
+        "en": "Around Ulaanbaatar train station, Bars market, Narnii road",
+        "charge": 6000
+      },
+      {
+        "id": 4,
+        "mn": "Алтай хотхон, Нарны гүүр",
+        "en": "Altai town, Narnii bridge",
+        "charge": 6000
+      },
+      {
+        "id": 5,
+        "mn": "Зам тээврийн хөгжлийн төв, Мастер плаза",
+        "en": "Road and Transport Development Center, Master plaza",
+        "charge": 6000
+      },
+      {
+        "id": 6,
+        "mn": "Шинэ хотхон хороолол, Монгол Базальт",
+        "en": "Shine khothon town, Mongol Basalt LLC",
+        "charge": 6000
+      },
+      {
+        "id": 7,
+        "mn": "ТЭЦ 4, Цахилгаан станц",
+        "en": "TETS 4th Power plant",
+        "charge": 6000
+      },
+      {
+        "id": 8,
+        "mn": "Хөгжил хотхон,Эрдмийн Ундраа 77-р сургууль орчим",
+        "en": "Khugjil Township, around School No. 77, Erdmiin Undraa",
+        "charge": 6000
+      },
+      {
+        "id": 9,
+        "mn": "Хорооллын эцэс, СОТ-ын байр орчим",
+        "en": "District 3 and 4 near the SOT building",
+        "charge": 6000
+      },
+      {
+        "id": 10,
+        "mn": "Хөгжил хотхон,Эрдмийн Ундраа 77-р сургууль орчим",
+        "en": "Khugjil Township, around School No. 77, Erdmiin Undraa",
+        "charge": 6000
+      },
+      {
+        "id": 11,
+        "mn": "Эх хүүхдийн эрүүл мэндийн төв, Зурагт",
+        "en": "Maternal and Child Health Center, television",
+        "charge": 6000
+      },
+      {
+        "id": 14,
+        "mn": "Өргөө кино театр , CASTLE club",
+        "en": "Urgoo cinema, CASTLE club",
+        "charge": 6000
+      },
+      {
+        "id": 16,
+        "mn": "Төв гандан орчим",
+        "en": "Around the central Gandan",
+        "charge": 6000
+      }
+    ]
+  },
+  {
+    "id": "Баянзүрх",
+    "en": "Bayanzurkh",
+    "subdistricts": [
+      {
+        "id": 1,
+        "mn": "Сансар, Цэцэг зочид буудал, РЦНК, Сансарын тунель орчим",
+        "en": "Sansar Tsetseg hotel, Russian Science and Culture Center, and around the Sansar tunnel",
+        "charge": 6000
+      },
+      {
+        "id": 2,
+        "mn": "Дарь эх, зуслангийн бүс",
+        "en": "Dari-ekh street, summer camp area",
+        "charge": 6000
+      },
+      {
+        "id": 3,
+        "mn": "Сансар И-март, Кемпински, СЭЗИС орчим",
+        "en": "Sansar E-Mart market, Kempinski Ulaanbaatar hotel, around the University of Finance and Economics",
+        "charge": 6000
+      },
+      {
+        "id": 4,
+        "mn": "Жуков хороолол орчим",
+        "en": "Around the Jukov street",
+        "charge": 6000
+      },
+      {
+        "id": 5,
+        "mn": "Цайз, 16-р хороолол, Шар-Хад, Да-хүрээ зах",
+        "en": "Tsaiz street, 16th disctrict, Shar Khad, Da-Khuree market",
+        "charge": 6000
+      },
+      {
+        "id": 6,
+        "mn": "Натур, Бөхийн өргөө, Чингис зочид буудал",
+        "en": "Nature street, Wrestling palace, Chinggis hotel",
+        "charge": 6000
+      },
+      {
+        "id": 7,
+        "mn": "Монгол цэргийн музей, Цэргийн төв эмнэлэг, Офицер",
+        "en": "Mongolian Military Museum, Central Military Hospital, Officer street",
+        "charge": 6000
+      },
+      {
+        "id": 8,
+        "mn": "Амгалан  /хүргэлтийн зааглах бүс/",
+        "en": "Amgalan street /delivery demarcation zone/",
+        "charge": 6000
+      }
+    ]
+  },
+  {
+    "id": "Хан-Уул",
+    "en": "Khan-Uul",
+    "subdistricts": [
+      {
+        "id": 1,
+        "mn": "120 мянгат, 52-р сургууль орчим",
+        "en": "120 myangat street, 52nd Secondary School",
+        "charge": 6000,
+        "below": 6000
+      },
+      {
+        "id": 2,
+        "mn": "19 үйлчилгээний төв, 115 -р сургууль, Зайсан Оргил худалдааны төв орчим",
+        "en": "19 Uilchilgee centre, 115th Secondary School, around Zaisan, Orgil supermarket",
+        "charge": 6000,
+        "below": 6000
+      },
+      {
+        "id": 3,
+        "mn": "Таван богд моторс, Эрэл Групп ХХК, ДЦС 3 түүнээс цааш орчим",
+        "en": "Tavan Bogd Motors, Erel group HQ, beyond the 3rd Thermal power station",
+        "charge": 6000,
+        "below": 6000
+      },
+      {
+        "id": 4,
+        "mn": "Яармаг, Чингис нисэх онгоцны буудал, Нүхтийн ам",
+        "en": "Yarmag Naadamchid street, Chinggis airport /old/, Nukht valley",
+        "charge": 6000
+      },
+      {
+        "id": 5,
+        "mn": "Чингисийн хүрээ амралтын газар - эцсийн бүс",
+        "en": "Chinggisiin khuree camp /delivery demarcation zone/",
+        "charge": 6000
+      }
+    ]
+  },
+  {
+    "id": "Сүхбаатар",
+    "en": "Sukhbaatar",
+    "subdistricts": [
+      {
+        "id": 1,
+        "mn": "Чойжин ламын музей, Шангрилла Улаанбаатар цогцолбор орчим",
+        "en": "Near Choijin Lama Museum and Shangri-La Ulaanbaatar complex",
+        "charge": 6000,
+        "below": 6000
+      },
+      {
+        "id": 2,
+        "mn": "Баянгол зочид буудал, Цирк орчим",
+        "en": "Bayangol Hotel, Near Circus",
+        "charge": 6000,
+        "below": 6000
+      },
+      {
+        "id": 3,
+        "mn": "Нарны зам, Орос 3-р сургууль, Саруул зах орчим",
+        "en": "Sun road, Russia 3rd school, near Saruul Market",
+        "charge": 6000
+      },
+      {
+        "id": 4,
+        "mn": "Хүүхдийн 100 , Улсын их дэлгүүр , 45-р Сургууль орчим",
+        "en": "Children's 100, State department store, 45th near the school",
+        "charge": 6000,
+        "below": 6000
+      },
+      {
+        "id": 5,
+        "mn": "Сөүлийн гудамж , Голомт хотхон орчим",
+        "en": "Golomt Town, Seoul Street",
+        "charge": 6000,
+        "below": 6000
+      },
+      {
+        "id": 6,
+        "mn": "Бага тойрог Чингис хааны музей орчим",
+        "en": "Baga toiruu  near Genghis Khan Museum",
+        "charge": 6000,
+        "below": 6000
+      },
+      {
+        "id": 7,
+        "mn": "Эрхүүгийн гудамж АНУ-ын элчин сайдын яам орчим",
+        "en": "Irkutsk Street near the US Embassy",
+        "charge": 6000,
+        "below": 6000
+      }
+    ]
+  },
+  {
+    "id": "Чингэлтэй",
+    "en": "Chingeltei",
+    "subdistricts": [
+      {
+        "id": 1,
+        "mn": "Монгол шуудан, 23-р сургууль, Жүр үр орчим",
+        "en": "Mongol Post , 23rd Secondary School, around the Jur-Ur bakery",
+        "charge": 6000,
+        "below": 6000
+      },
+      {
+        "id": 2,
+        "mn": "Бөмбөгөр худалдааны төв, ЧД, Элба орчим",
+        "en": "Bumbugur market, Chingeltei District, around the ELBA centre",
+        "charge": 6000,
+        "below": 6000
+      },
+      {
+        "id": 3,
+        "mn": "УИД, 24-р сургууль, Урт цагаан орчим",
+        "en": "(The State Department Store, 24th Secondary School, Urt-Tsagaan street",
+        "charge": 6000,
+        "below": 6000
+      },
+      {
+        "id": 4,
+        "mn": "Баянбүрд тойрог, 32-н тойрог хүртэл",
+        "en": "Bayanburd roundabouts to 32nd roundabouts",
+        "charge": 6000
+      },
+      {
+        "id": 5,
+        "mn": "Тэнгис кино театр, тасганы овоо, Нисдэг машин худалдааны төв",
+        "en": "Tengis Cinema, Tasgan  uvoo , Flying Machines Mall",
+        "charge": 6000
+      },
+      {
+        "id": 6,
+        "mn": "Дөлгөөн нуур, 5р сургууль, Метро молл худалдааны төв орчим",
+        "en": "Near Dulgoon Lake, School No. 5, Metro Mall shopping center",
+        "charge": 6000
+      },
+      {
+        "id": 8,
+        "mn": "Тасганы овооноос МҮОНРТ хүрэх орчим",
+        "en": "From Tasgan Uvoo to Mongolian National Public Radio and Television",
+        "charge": 6000
+      },
+      {
+        "id": 9,
+        "mn": "Баянбүрд тойрог",
+        "en": "Bayanburd",
+        "charge": 6000
+      }
+    ]
+  },
+  {
+    "id": "Сонгинохайрхан",
+    "en": "Songinohairkhan",
+    "subdistricts": [
+      {
+        "id": 4,
+        "mn": "21-р хороолол , Орчлон хороолол орчим",
+        "en": "21st district, around Orchlon district",
+        "charge": 6000
+      },
+      {
+        "id": 11,
+        "mn": "Хөтөлөөс Баянхошууны эцэс орох замын орчим",
+        "en": "Around Khutul",
+        "charge": 6000
+      },
+      {
+        "id": 12,
+        "mn": "Саппоро , 1-р хороолол орчим",
+        "en": "Sapporo, around the 1st district",
+        "charge": 6000
+      },
+      {
+        "id": 13,
+        "mn": "Цамбагарав,Соёмбо кино театр орчим",
+        "en": "Around Tsambagarav Soyombo Cinema",
+        "charge": 6000
+      },
+      {
+        "id": 15,
+        "mn": "Хархорин худалдааны төв орчим",
+        "en": "Near Kharkhorin shopping center",
+        "charge": 6000
+      },
+      {
+        "id": 16,
+        "mn": "Хархорин худалдааны төвын ард байрлах 32 орчим",
+        "en": "32, located behind Kharkhorin shopping center",
+        "charge": 6000
+      },
+      {
+        "id": 17,
+        "mn": "Москва хороолол, 32 орчим",
+        "en": "Moscow district, about 32",
+        "charge": 6000
+      }
+    ]
+  }
+]

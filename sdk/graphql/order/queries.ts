@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const orderItemFields = `
     _id
@@ -16,18 +16,7 @@ export const orderItemFields = `
     bonusCount
 `;
 
-const activeOrderFields = `
-    _id
-    deliveryInfo
-    description
-    billType
-    registerNumber
-    items {
-      ${orderItemFields}
-    }
-`;
-
-const currentOrder = gql`
+export const currentOrder = gql`
   query CurrentOrder(
     $customerId: String
     $saleStatus: String
@@ -44,15 +33,22 @@ const currentOrder = gql`
       sortDirection: $sortDirection
       statuses: $statuses
     ) {
-      ${activeOrderFields}
-    }
-  }
-`;
-
-const activeOrderDetail = gql`
-query ActiveOrderDetail($id: String, $customerId: String) {
-  orderDetail(_id: $id, customerId: $customerId) {
-      ${activeOrderFields}
+      _id
+      deliveryInfo
+      dueDate
+      description
+      paidDate
+      billType
+      registerNumber
+      totalAmount
+      mobileAmount
+      saleStatus
+      number
+      type
+      items {
+        ${orderItemFields}
+      }
+      extraInfo
     }
   }
 `;
@@ -81,6 +77,7 @@ export const fullOrders = gql`
       totalAmount
       number
       items {
+        productId
         productName
         productImgUrl
       }
@@ -102,6 +99,13 @@ export const orderFields = `
   status
   paidDate
   mobileAmount
+  cashAmount
+  paidAmounts {
+    _id
+    amount
+    info
+    type
+  }
   totalAmount
   slotCode
   registerNumber
@@ -113,6 +117,7 @@ export const orderFields = `
   type
   deliveryInfo
   description
+  dueDate
 `;
 
 const customerFields = `
@@ -156,6 +161,7 @@ query OrderDetail($id: String, $customerId: String) {
       putResponses {
         ${putResponseFields}
       }
+      extraInfo
     }
   }
 `;
@@ -182,24 +188,38 @@ const orderItemDetail = gql`
 `;
 
 const addresses = gql`
-  query Addresses {
-    clientPortalCurrentUser {
-      customer {
-        addresses
-      }
+  query AddressList($customerId: String) {
+    addressList(customerId: $customerId) {
+      _id
+      alias
+      address1
+      address2
+      city
+      district
+      street
+      detail
+      more
+      w3w
+      note
     }
+  }
+`;
+
+const ownerVouchers = gql`
+  query OwnerVouchers($ownerId: String!) {
+    ownerVouchers(ownerId: $ownerId)
   }
 `;
 
 const queries = {
   orderItemDetail,
   currentOrder,
-  activeOrderDetail,
   ordersCheckCompany,
   fullOrders,
   orderDetail,
   invoices,
   addresses,
+  ownerVouchers,
 };
 
 export default queries;

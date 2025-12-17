@@ -10,6 +10,7 @@ import OrderCRUD from "@/containers/order-cud";
 import { getConfig } from "@/sdk/queries/auth";
 import ConfigProvider from "@/components/layouts/config";
 import { Metadata } from "next/types";
+import { getProducts } from "@/sdk/queries/products";
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -51,7 +52,9 @@ export default async function RootLayout({ children }: RootLayoutProps) {
   const { config } = await getConfig();
   const { uiOptions } = config || {};
   const { colors } = uiOptions || {};
-
+  const { products } = await getProducts({
+    variables: { categoryId: process.env.NEXT_PUBLIC_CHARGES_CAT_ID },
+  });
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -93,7 +96,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         )}
       >
         <Providers>
-          <ConfigProvider config={config}>
+          <ConfigProvider config={config} deliveryProducts={products}>
             <DefaultLayout>{children}</DefaultLayout>
           </ConfigProvider>
           <CurrentOrder />

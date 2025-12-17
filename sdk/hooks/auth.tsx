@@ -1,17 +1,17 @@
-import { BaseMutationOptions, useMutation } from '@apollo/client';
-import { mutations } from '../graphql/auth';
-import { useSetAtom } from 'jotai';
+import { BaseMutationOptions, useMutation } from "@apollo/client";
+import { mutations } from "../graphql/auth";
+import { useSetAtom, useAtomValue } from "jotai";
 import {
+  configAtom,
   loadingUserAtom,
   refetchCurrentUserAtom,
-  userTypeAtom,
-} from '@/store/auth.store';
-import { toast } from 'sonner';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { onError } from '@/lib/utils';
-import { fbLogout } from '@/lib/facebook';
-import { activeOrderAtom, defaultActiveOrder } from '@/store/order.store';
-import { IOrder } from '@/types/order.types';
+} from "@/store/auth.store";
+import { toast } from "sonner";
+import { useRouter, useSearchParams } from "next/navigation";
+import { onError } from "@/lib/utils";
+import { onErrorLogin } from "@/lib/utils";
+import { fbLogout } from "@/lib/facebook";
+import { useEffect } from "react";
 
 const clientPortalId = process.env.NEXT_PUBLIC_CP_ID;
 
@@ -22,7 +22,7 @@ interface ILoginData {
 
 const useLoginCallback = () => {
   const router = useRouter();
-  const from = useSearchParams().get('from');
+  const from = useSearchParams().get("from");
   const triggerRefetchUser = useSetAtom(refetchCurrentUserAtom);
   const setLoadingUser = useSetAtom(loadingUserAtom);
 
@@ -32,15 +32,15 @@ const useLoginCallback = () => {
       callback?: () => void
     ) => {
       if (token) {
-        sessionStorage.setItem('token', token);
-        sessionStorage.setItem('refetchToken', refetchToken || '');
+        sessionStorage.setItem("token", token);
+        sessionStorage.setItem("refetchToken", refetchToken || "");
         triggerRefetchUser(true);
         setLoadingUser(true);
-        toast.success('Сайн байна уу?', {
-          description: 'Та амжилттай нэвтэрлээ',
+        toast.success("Сайн байна уу?", {
+          description: "Та амжилттай нэвтэрлээ",
         });
 
-        router.push(from ? from : '/');
+        router.push(from ? from : "/");
         !!callback && callback();
       }
     },
@@ -54,7 +54,7 @@ export const useLogin = (onCompleted?: () => void) => {
     onCompleted: ({ clientPortalLogin }) => {
       loginCallback(clientPortalLogin, onCompleted);
     },
-    onError,
+    onError: onErrorLogin,
   });
 
   return { login, loading, clientPortalId };
@@ -83,7 +83,7 @@ export const useFacebookLogin = () => {
 };
 
 export const useRegister = (
-  onCompleted?: BaseMutationOptions['onCompleted']
+  onCompleted?: BaseMutationOptions["onCompleted"]
 ) => {
   const [register, { loading }] = useMutation(mutations.createUser, {
     onCompleted: (data) => {
@@ -95,17 +95,44 @@ export const useRegister = (
   return { register, loading, clientPortalId };
 };
 
+export const useVerify = (onCompleted?: BaseMutationOptions["onCompleted"]) => {
+  const [verify, { loading }] = useMutation(mutations.userVerify, {
+    onCompleted: (data) => {
+      !!onCompleted && onCompleted(data);
+    },
+    onError,
+  });
+
+  return { verify, loading, clientPortalId };
+};
+
 export const useUserEdit = () => {
   const setRefetchUser = useSetAtom(refetchCurrentUserAtom);
   const [editUser, { loading }] = useMutation(mutations.userEdit, {
     onCompleted() {
       setRefetchUser(true);
-      toast.success('Хувийн мэдээлэл шинэчлэгдсэн');
+      toast.success("Хувийн мэдээлэл шинэчлэгдсэн");
     },
     onError,
   });
 
   return { loading, editUser };
+};
+
+export const useErxesCustomerEdit = () => {
+  const { erxesAppToken } = useAtomValue(configAtom) || {};
+  const [erxesCustomerEdit, { loading }] = useMutation(
+    mutations.erxesCustomerEdit,
+    {
+      context: {
+        headers: {
+          "erxes-app-token": erxesAppToken,
+        },
+      },
+      onError() {},
+    }
+  );
+  return { loading, erxesCustomerEdit };
 };
 
 export const useForgotPassword = () => {
@@ -149,20 +176,16 @@ export const useResetPassword = () => {
 
 export const useLogout = () => {
   const triggerRefetchUser = useSetAtom(refetchCurrentUserAtom);
-  const setActiveOrder = useSetAtom(activeOrderAtom);
-  const setUserType = useSetAtom(userTypeAtom);
   const [logout, { loading }] = useMutation(mutations.logout, {
     onCompleted() {
       triggerRefetchUser(true);
-      setActiveOrder(defaultActiveOrder as IOrder);
-      setUserType(null);
     },
     onError,
   });
 
   const handleLogout = () => {
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('refetchToken');
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("refetchToken");
     fbLogout();
     logout();
   };

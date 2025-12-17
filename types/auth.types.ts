@@ -1,4 +1,6 @@
-export type CustomerType = '' | 'user' | 'company';
+import { IProduct } from "./product.types";
+
+export type CustomerType = "" | "user" | "company";
 
 export interface Customer {
   _id: string;
@@ -30,4 +32,5 @@ export interface IConfig {
     };
     favIcon: string;
   };
+  deliveryProducts?: IProduct[];
 }
