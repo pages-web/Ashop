@@ -50,8 +50,10 @@ const useLoginCallback = () => {
 export const useLogin = (onCompleted?: () => void) => {
   const { loginCallback } = useLoginCallback();
 
-  const [login, { loading }] = useMutation(mutations.login, {
+  const [login, { loading, client }] = useMutation(mutations.login, {
     onCompleted: ({ clientPortalLogin }) => {
+      // Refetch Apollo Client queries
+      client.refetchQueries({ include: "active" });
       loginCallback(clientPortalLogin, onCompleted);
     },
     onError: onErrorLogin,
