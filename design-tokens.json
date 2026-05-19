@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "siteName": "ashop",
+    "visualDirection": "modern-elevated",
+    "motionLevel": 2,
+    "defaultLocale": "mn",
+    "locales": ["mn", "en"]
+  },
+  "colors": {
+    "brand": {
+      "primary": "#111111",
+      "secondary": "#0066cc",
+      "accent": "#f5f5f7"
+    },
+    "neutral": {
+      "white": "#ffffff",
+      "gray50": "#f8f9fa",
+      "gray100": "#f5f5f7",
+      "gray200": "#e8e8ed",
+      "gray300": "#d2d2d7",
+      "gray400": "#a0a0a0",
+      "gray500": "#86868b",
+      "gray600": "#666666",
+      "gray700": "#515154",
+      "gray800": "#333333",
+      "gray900": "#1d1d1f",
+      "black": "#111111"
+    },
+    "semantic": {
+      "background": "#ffffff",
+      "foreground": "#111111",
+      "card": "#ffffff",
+      "cardForeground": "#111111",
+      "popover": "#ffffff",
+      "popoverForeground": "#111111",
+      "primary": "#111111",
+      "primaryForeground": "#ffffff",
+      "secondary": "#f5f5f7",
+      "secondaryForeground": "#111111",
+      "muted": "#f5f5f7",
+      "mutedForeground": "#86868b",
+      "accent": "#0066cc",
+      "accentForeground": "#ffffff",
+      "border": "#e8e8ed",
+      "input": "#e8e8ed",
+      "ring": "#0066cc",
+      "success": "#34c759",
+      "warning": "#ff9500",
+      "destructive": "#ff3b30"
+    }
+  },
+  "typography": {
+    "families": {
+      "display": "Inter, system-ui, -apple-system, sans-serif",
+      "body": "Inter, system-ui, -apple-system, sans-serif",
+      "mono": "SF Mono, Monaco, monospace"
+    },
+    "scale": {
+      "xs": "12px",
+      "sm": "14px",
+      "base": "16px",
+      "lg": "18px",
+      "xl": "20px",
+      "2xl": "24px",
+      "3xl": "28px",
+      "4xl": "36px",
+      "5xl": "48px",
+      "6xl": "56px",
+      "7xl": "72px"
+    }
+  },
+  "spacing": {
+    "scale": {
+      "0": "0px",
+      "1": "4px",
+      "2": "8px",
+      "3": "12px",
+      "4": "16px",
+      "5": "20px",
+      "6": "24px",
+      "8": "32px",
+      "10": "40px",
+      "12": "48px",
+      "16": "64px",
+      "20": "80px",
+      "24": "96px"
+    },
+    "layout": {
+      "pagePadding": "48px",
+      "sectionGap": "80px",
+      "contentMaxWidth": "1200px"
+    }
+  },
+  "radius": {
+    "none": "0px",
+    "sm": "8px",
+    "md": "12px",
+    "lg": "16px",
+    "xl": "20px",
+    "full": "9999px"
+  },
+  "shadows": {
+    "sm": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+    "md": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+    "lg": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+    "xl": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)"
+  },
+  "motion": {
+    "duration": {
+      "fast": "150ms",
+      "normal": "300ms",
+      "slow": "500ms"
+    },
+    "easing": {
+      "default": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "in": "cubic-bezier(0.4, 0, 1, 1)",
+      "out": "cubic-bezier(0, 0, 0.2, 1)",
+      "bounce": "cubic-bezier(0.34, 1.56, 0.64, 1)"
+    },
+    "spring_configs": {
+      "gentle": "{ stiffness: 120, damping: 14 }",
+      "snappy": "{ stiffness: 300, damping: 30 }"
+    },
+    "variants": {
+      "fadeIn": "{ opacity: 0 } -> { opacity: 1 }",
+      "slideUp": "{ y: 20, opacity: 0 } -> { y: 0, opacity: 1 }",
+      "scaleIn": "{ scale: 0.95, opacity: 0 } -> { scale: 1, opacity: 1 }"
+    }
+  }
+}

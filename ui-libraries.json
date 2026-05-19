@@ -1,0 +1,40 @@
+{
+  "motion_level": 2,
+  "visual_direction": "modern-elevated",
+  "packages": [
+    "framer-motion",
+    "clsx",
+    "tailwind-merge",
+    "lucide-react",
+    "next-themes"
+  ],
+  "shadcn_components": [
+    "button",
+    "card",
+    "input",
+    "badge",
+    "separator",
+    "skeleton"
+  ],
+  "custom_components": [
+    "ProductCard",
+    "ProductGrid",
+    "BlogCard",
+    "BlogGrid",
+    "HeroSection",
+    "AboutSection",
+    "ContactSection",
+    "Footer",
+    "Header",
+    "CartBadge"
+  ],
+  "animation_config": {
+    "core_library": "framer-motion",
+    "scroll_library": "lenis",
+    "text_animation": "custom",
+    "page_transition": "framer",
+    "ambient_system": "css",
+    "micro_interactions": "framer-motion",
+    "gsap_plugins": []
+  }
+}

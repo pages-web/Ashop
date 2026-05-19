@@ -1,0 +1,10 @@
+[
+  { "label": "Нүүр", "url": "/", "order": 1, "kind": "header" },
+  { "label": "Бүтээгдэхүүн", "url": "/products", "order": 2, "kind": "header" },
+  { "label": "Бидний тухай", "url": "/about", "order": 3, "kind": "header" },
+  { "label": "Блог", "url": "/blog", "order": 4, "kind": "header" },
+  { "label": "Холбоо барих", "url": "/contact", "order": 5, "kind": "header" },
+  { "label": "Бидний тухай", "url": "/about", "order": 1, "kind": "footer" },
+  { "label": "Холбоо барих", "url": "/contact", "order": 2, "kind": "footer" },
+  { "label": "Блог", "url": "/blog", "order": 3, "kind": "footer" }
+]
